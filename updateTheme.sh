@@ -5,7 +5,9 @@
 cd /httpdocs/stage
 
 # Run the cache clearing command
+php bin/console theme:compile
 php bin/console cache:clear
+/usr/bin/composer dump-autoload
 
 # Get the current timestamp in a desired format (e.g., YYYYMMDD_HHMMSS)
 timestamp=$(date +"%Y%m%d_%H%M%S")
