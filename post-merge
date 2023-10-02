@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Run your custom script after a merge
+/httpdocs/updateTheme.sh
