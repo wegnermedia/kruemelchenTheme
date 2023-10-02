@@ -1,0 +1,136 @@
+{% set currentPage = ((searchResult.criteria.offset + 1) / searchResult.criteria.limit )|round(0, 'ceil') %}
+{% set paginationConfig = { page: currentPage }|json_encode %}
+
+{% if disableEmptyFilter is not defined %}
+    {% set disableEmptyFilter = config('core.listing.disableEmptyFilterOptions') %}
+{% endif %}
+
+{% set listingPagination = {
+    sidebar: sidebar,
+    params: params,
+    dataUrl: dataUrl,
+    filterUrl: filterUrl,
+    disableEmptyFilter: disableEmptyFilter,
+    snippets: {
+        resetAllButtonText: 'listing.filterPanelResetAll'|trans|sw_sanitize
+    }
+} %}
+
+{% block product_listing %}
+    <div class="cms-element-product-listing-wrapper"
+         data-listing-pagination="true"
+         data-listing-pagination-options='{{ paginationConfig }}'
+         data-listing="true"
+         data-listing-options='{{ listingPagination|json_encode }}'>
+
+
+
+        {% block element_product_listing_wrapper_content %}
+            <div class="cms-element-product-listing">
+                {% if searchResult.total > 0 %}
+                    {% block element_product_listing_pagination_nav_actions %}
+                        <div class="cms-element-product-listing-actions row justify-content-between">
+                            <div class="col-md-auto">
+                                <h3 class="k-listing-item-count">{{ searchResult.total }} Produkte für Dich</h3>
+                            </div>
+
+                            <div class="col-md-auto">
+
+                                {% block element_product_listing_sorting %}
+                                    {% sw_include '@Storefront/storefront/component/sorting.html.twig' with {
+                                        current: searchResult.sorting,
+                                        sortings: searchResult.availableSortings
+                                    } %}
+                                {% endblock %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endif %}
+
+                {% block element_product_listing_row %}
+                    <div class="row cms-listing-row js-listing-wrapper">
+                        {% if searchResult.total > 0 %}
+                            {% block element_product_listing_col %}
+                                {% for product in searchResult %}
+                                    <div class="cms-listing-col {{ listingColumns }}">
+                                        {% block element_product_listing_box %}
+                                            {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                                                'layout': boxLayout,
+                                                'displayMode': displayMode
+                                            } %}
+                                        {% endblock %}
+
+                                        <script type="text/javascript">
+                                            function hideElementsWithoutClass() {
+                                                // Get all elements with the class 'product-detail-configurator-option-input'
+                                                var elements = document.querySelectorAll('.product-detail-configurator-option-input');
+
+                                                // Iterate through each element and hide its parent if it does not have the class 'is-combinable'
+                                                elements.forEach(function(element) {
+                                                    if (!element.classList.contains('is-combinable')) {
+                                                        var parent = element.parentElement;
+                                                        if (parent) {
+                                                            parent.style.display = 'none';
+                                                        }
+                                                    }
+                                                });
+                                            }
+
+                                            // Function to be called when DOM changes
+                                            function handleDOMChanges(mutationsList, observer) {
+                                                mutationsList.forEach(function(mutation) {
+                                                    hideElementsWithoutClass();
+                                                    // You can inspect the mutation and perform actions here
+                                                });
+                                            }
+
+                                            // Create a new MutationObserver
+                                            var observer = new MutationObserver(handleDOMChanges);
+
+                                            // Define the configuration for the observer
+                                            var config = {
+                                                attributes: true, // Watch for changes to attributes (e.g., class, style)
+                                                childList: true, // Watch for changes in the child nodes (e.g., added or removed elements)
+                                                subtree: true,   // Watch changes in the entire subtree of the observed element
+                                                characterData: true // Watch for changes in text content of nodes
+                                            };
+
+                                            // Start observing the DOM with the specified configuration
+                                            observer.observe(document.body, config);
+
+                                            // Call the function when the DOM is ready
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                hideElementsWithoutClass();
+                                            });
+                                        </script>
+                                    </div>
+                                {% endfor %}
+                            {% endblock %}
+                        {% else %}
+                            {% block element_product_listing_col_empty %}
+                                <div class="cms-listing-col col-12">
+                                    {% block element_product_listing_col_empty_alert %}
+                                        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                            type: 'info',
+                                            content: 'listing.emptyResultMessage'|trans|sw_sanitize
+                                        } %}
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% if searchResult.total > searchResult.limit %}
+                    {% block element_product_listing_pagination_nav_bottom %}
+                        {% sw_include '@Storefront/storefront/component/pagination.html.twig' with {
+                            entities: searchResult,
+                            criteria: searchResult.criteria,
+                            paginationLocation: 'bottom',
+                        } %}
+                    {% endblock %}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% block sas_blog_detail %}
+
+    <div class="k-blog-detail-link-back">
+        <a href="/{{ theme_config('k-blog-slug') }}/" class="k-blog-detail-back-link">{{ theme_config('k-blog-detail-backlink-text') }}</a>
+    </div>
+
+    {% if element.data %}
+        <article class="k-blog-detail-article row"
+                 itemprop="article"
+                itemscope
+                itemtype="https://schema.org/BlogPosting">
+
+
+            <meta itemprop="datePublished" content="{{ product.releaseDate|format_date(pattern="Y-MM-dd", locale=app.request.locale) }}"/>
+
+               <div class="col-12 sas-blog-detail-article">
+                    {% if element.data.detailTeaserImage %}
+                        {% set attributes = {
+                            'class': 'blog-image-teaser k-blog-detail-image-teaser card-img-top mb-10',
+                            'alt': (element.data.media.translated.alt ?: element.data.media.fileName),
+                            'title': (element.data.media.translated.title ?: element.data.media.fileName)
+                        } %}
+
+                        {% sw_thumbnails 'blog-image-teaser' with {
+                                media: element.data.media,
+                                sizes: {
+                                'xs': '501px',
+                                'sm': '315px',
+                                'md': '427px',
+                                'lg': '333px',
+                                'xl': '284px'
+                            }
+                        } %}
+                    {% endif %}
+
+                    <h1 class="sas-blog-detail-title k-blog-detail-title" itemprop="headline">
+                        {{ element.data.translated.title }}
+                    </h1>
+
+                   <div class="k-blog-detail-meta">
+                       <figure class="sas-author figure mr-2">
+                           <figcaption class="figure-caption">
+                               <span>{{ element.data.createdAt|format_date('short', locale=app.request.locale) }} - </span>
+                               <span data-toggle="tooltip" title="{{ "sas-blog.detail.meta.author"|trans|striptags }}">geschrieben von {{ element.data.author.displayName ?? element.data.author.translated.name }}</span>
+                               {% set categoriesName = [] %}
+                               {% for category in element.data.blogCategories %}
+                                   {% set categoriesName = categoriesName|merge([category.translated.name]) %}
+                               {% endfor %}
+                               <span data-toggle="tooltip" title="{{ "sas-blog.detail.meta.category"|trans|striptags }}"> in den Kategorien: {{ categoriesName|join(', ') }}</span>
+                           </figcaption>
+                       </figure>
+                   </div>
+
+                    <div class="k-blog-detail-content">
+                        {{ element.data.translated.content|raw }}
+                    </div>
+
+                </div>
+
+        </article>
+
+        <div class="k-blog-detail-link-back">
+            <a href="/{{ theme_config('k-blog-slug') }}/" class="k-blog-detail-back-link">{{ theme_config('k-blog-detail-backlink-text-bottom') }}</a>
+        </div>
+
+    {% else %}
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: "warning",
+            content: 'sas-blog.element.detail.warning.content'|trans,
+            heading: 'sas-blog.element.detail.warning.heading'|trans
+        } %}
+    {% endif %}
+{% endblock %}

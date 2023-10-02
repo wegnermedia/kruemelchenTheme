@@ -1,0 +1,49 @@
+/* Hero Section */
+
+.k-hero-section {
+  background-attachment: scroll;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding: $k-design-base-margin 0;
+  margin:0 0 $k-design-base-margin 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.k-hero-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.k-hero-text {
+  min-width: 80%;
+  max-width: 600px;
+  margin: $k-design-base-margin auto;
+
+}
+
+.k-hero-section h2 {
+  font-size: 3em;
+  line-height:1.2em;
+}
+
+.k-hero-section p {
+  font-size: 1.2em;
+}
+
+.k-hero-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Different Styles for different Heros */
+.k-hero-section--startseite {
+  margin-bottom: 0px;
+
+  h2,p {
+    color: $k-design-hero-startseite-color;
+  }
+}

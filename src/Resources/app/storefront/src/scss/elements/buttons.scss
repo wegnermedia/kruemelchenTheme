@@ -1,0 +1,66 @@
+.btn,
+.k-button {
+    font-size: $k-design-base-size-btn;
+    padding-top: $k-design-base-margin / 4;
+    padding-right: $k-design-base-margin / 2;
+    padding-bottom: $k-design-base-margin / 4;
+    padding-left: $k-design-base-margin / 2;
+    transition: all .3s;
+    text-decoration: none;
+    border-radius: 50px;
+    position: relative;
+
+    &:active {
+        top: 1px;
+    }
+
+    &:hover,
+    &:hover *,
+    & * {
+        text-decoration: none !important;
+        text-shadow: none;
+    }
+}
+
+form .btn {
+    padding: 0.3em 0.8em;
+}
+
+.k-button--default {
+    background-color: theme-color('primary');
+    color: #ffffff;
+    opacity: .9;
+
+    &:hover {
+        opacity: 1;
+        color: #ffffff;
+    }
+
+    .k-button-label {
+        color: inherit;
+    }
+}
+
+.k-button--outline-on-dark {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+
+    &:hover {
+        background-color: #ffffff;
+        color: theme-color('primary');
+
+        & * {
+            color: theme-color('primary');
+        }
+    }
+}
+
+.maxia-quickbuy-actions .btn-buy,
+.maxia-extra-detail-btn {
+    height: inherit;
+}
+
+.btn-text {
+    background-color: inherit;
+    border-color: inherit;
+}

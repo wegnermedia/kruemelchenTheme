@@ -1,0 +1,270 @@
+/*
+    Header
+ */
+
+.header-row {
+  padding: 1rem 0 1.5rem 0;
+}
+
+
+
+/* Shop Navigation */
+
+/* Logo */
+
+.header-logo-picture {
+  max-width: 180px;
+}
+
+.header-logo-mobile {
+  display: none;
+}
+
+  /* Search bar */
+
+.header-search-btn {
+  padding: 2px 12px;
+}
+
+.k-header-main-menu {
+  padding-bottom: 40px;
+}
+
+/* Main Navigation */
+.main-navigation {
+  border-top: 1px solid theme-color("border");
+  border-bottom: 1px solid theme-color("border");
+  padding-top: 20px;
+  padding-bottom:10px;
+}
+
+.k-header-nav.k-header-nav--main {
+  flex-wrap: wrap;
+
+  .nav-link:first-child {
+    padding-left: 0px;
+  }
+
+  .nav-link:last-child {
+    padding-right: 0px;
+  }
+
+  .nav-link {
+    padding: 0 .2em .5em .2em;
+    position: relative;
+    border: none;
+
+    .nav-link-indicator {
+      position: absolute;
+      height: 44px;
+      width: 44px;
+      opacity: .2;
+      border-radius: 22px;
+      top: -9px;
+      left: calc(50% - 22px);
+      transition: all .1s ease-in-out;
+      z-index: 10;
+      border: 1px solid transparent;
+    }
+
+    &:hover .nav-link-indicator {
+      // background: transparent !important;
+      width: 140%;
+      left: -20%;
+    }
+
+    &.is-open .nav-link-indicator,
+    &.active .nav-link-indicator {
+      width: 140%;
+      left: -20%;
+    }
+
+    &.active {
+      .nav-link-indicator {
+        opacity: 1;
+      }
+      .main-navigation-link-text {
+        color: #ffffff;
+        z-index: 20;
+
+        span {
+          color: #ffffff;
+        }
+      }
+    }
+
+    & * {
+      font-size: 16px;
+    }
+  }
+}
+
+.navigation-flyout-categories.is-level-0 > .navigation-flyout-col::before {
+  border: none;
+}
+
+.main-navigation-link .main-navigation-link-text,
+.main-navigation-link.active .main-navigation-link-text {
+  border: none !important;
+  text-transform: lowercase;
+  span {
+    position: relative;
+    z-index: 20;
+  }
+}
+
+/* Header Elements */
+.k-header-elements {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 2em 0;
+}
+
+.k-header-element {
+  display: flex;
+  align-items: center;
+}
+
+.k-header-element--logo {
+  display: flex;
+  flex-direction: row;
+
+  .k-header-nav-toggle {
+    display: none;
+  }
+
+}
+
+.k-header-element--search {
+  justify-content: center;
+
+  .collapse {
+    display: flex;
+    width: 100%;
+
+    .header-search {
+      width: 100%;
+    }
+  }
+}
+
+.k-header-element--actions {
+  justify-content: flex-end;
+
+  .k-header-search-toggle {
+    display: none;
+  }
+}
+
+.k-brand-bar-top {
+  display: none;
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+
+  .k-brand-bar {
+    position: absolute;
+    width: 100%;
+  }
+}
+
+
+/* Tablet and Smaller */
+@media all and ( max-width: 767px ) {
+
+  .k-brand-bar-top {
+    display: block;
+
+    .k-brand-bar {
+      top: 0;
+
+    }
+  }
+
+  .k-header-element--actions {
+
+    .header-actions-btn {
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 0px;
+    }
+
+    .btn .badge {
+      top: 0px;
+    }
+
+  }
+}
+@media all and ( max-width: 991px ) {
+
+
+  .nav-main {
+    display: none;
+  }
+
+  .header-row {
+    padding-bottom:10px;
+    padding-top: 20px;
+    margin-bottom: 0;
+  }
+
+  .k-header-elements {
+    flex-wrap: wrap;
+  }
+
+  .k-header-element--logo {
+    order: 1;
+    flex-grow: 1;
+    justify-content: space-between;
+
+    .k-header-logo {
+      margin-left: 10px;
+    }
+
+    .k-header-nav-toggle {
+      display: flex;
+    }
+
+  }
+
+  .k-header-element--search {
+    order: 3;
+    width: 100%;
+    flex-basis: auto;
+    margin-top: 10px;
+
+    .collapse.show,
+    .collapsing {
+    }
+
+    .collapse {
+      display: none;
+      width: 100%;
+
+      .header-search {
+        width: 100%;
+      }
+    }
+
+    .collapse.show {
+      display: flex;
+    }
+
+    .collapsing {
+      width: 100%;
+    }
+  }
+
+  .k-header-element--actions {
+    order: 2;
+    flex-grow: 1;
+
+    .k-header-search-toggle {
+      display: flex;
+    }
+  }
+
+
+
+}

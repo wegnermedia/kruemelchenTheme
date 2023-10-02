@@ -1,0 +1,26 @@
+{%  sw_extends "@Storefront/storefront/base.html.twig" %}
+
+{% block base_header_inner %}
+
+    {%  if theme_config('k-werbung-topbar-show') %}
+        {% sw_include '@Storefront/storefront/elements/_adbar.html.twig' %}
+    {% endif %}
+
+    {%  sw_include "@Storefront/storefront/elements/_brandbar.html.twig" %}
+
+    {% sw_include '@Storefront/storefront/elements/_topbar.html.twig' %}
+
+    <div class="k-brand-bar-top">
+        {%  sw_include "@Storefront/storefront/elements/_brandbar.html.twig" %}
+    </div>
+
+    {{ parent() }}
+{% endblock %}
+
+{% block base_footer_inner %}
+    <div class="k-footer">
+        {{ parent() }}
+    </div>
+{% endblock %}
+
+

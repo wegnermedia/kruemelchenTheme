@@ -1,0 +1,29 @@
+/* Filtering */
+
+.filter-panel{
+  margin-bottom: 0px;
+}
+
+.filter-panel-items-container {
+  margin-bottom: 0px;
+}
+
+.cms-element-sidebar-filter {
+  .btn.filter-reset-all {
+    line-height: .5;
+  }
+
+  .filter-range-currency-symbol, .filter-range-unit {
+    line-height: 5px;
+    background-color: transparent;
+  }
+
+  .filter-range-container {
+    align-items: center;
+  }
+
+  .filter-range-divider {
+    position: relative;
+    top: 7px;
+  }
+}

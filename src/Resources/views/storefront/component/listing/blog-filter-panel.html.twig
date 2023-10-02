@@ -1,0 +1,37 @@
+{% sw_extends '@Storefront/storefront/component/listing/filter-panel.html.twig' %}
+
+{% block component_filter_panel_items_container %}
+
+    <div class="k-blog-category-container">
+
+        {% block component_filter_panel_item_category %}
+            {% if config.showCategoryFilter.value %}
+                {% set blogCategories = listing.aggregations.get('blogCategories') %}
+                {% if not blogCategories.entities is empty %}
+                    {% set blogCategoriesSorted = blogCategories.entities|sort((a, b) => a.translated.name|lower > b.translated.name|lower) %}
+
+                        <ul class="k-blog-categories">
+                            <li class="k-blog-category-item {{ activeCategoryClass() }}">
+                                <a href="/{{ theme_config('k-blog-slug') }}/" class="k-blog-category-link">
+                                    <span class="k-blog-category-link-text">Alles</span>
+                                </a>
+                            </li>
+                            {%  for element in blogCategoriesSorted %}
+                                <li class="k-blog-category-item {{ activeCategoryClass(element.id) }}">
+                                    <a href="/{{ theme_config('k-blog-slug') }}/?categories={{ element.id }}" class="k-blog-category-link">
+                                        <span class="k-blog-category-link-text">{{ element.name }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                {% endif %}
+            {% endif %}
+        {% endblock %}
+
+        {% block component_filter_panel_item_author %}
+
+        {% endblock %}
+
+    </div>
+{% endblock %}

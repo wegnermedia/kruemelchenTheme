@@ -1,0 +1,142 @@
+/* Footer Main */
+
+.footer-main * {
+  font-size: 1em;
+}
+
+
+
+.k-footer-row--logo {
+  background-color: theme-color-level("brand3", -12);
+  padding: 2rem 0 2rem 0;
+  text-align: center;
+
+  .k-footer-logo-link {
+    display: inline-block;
+    margin: 0 auto $k-design-base-margin auto;
+  }
+
+  img {
+    max-width: 240px;
+    height: auto;
+  }
+
+}
+
+.k-footer-row--infos {
+  background-color: theme-color-level("brand3", -12);
+  padding: 0;
+}
+
+.footer-column-content-inner {
+  margin-top: 1rem;
+}
+
+
+.k-footer-support-link {
+  display: block;
+  width: 100%;
+
+  .k-footer-support-figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .k-footer-support-img {
+    width: 80%;
+  }
+
+  .k-footer-support-caption {
+    display: inline-block;
+    padding: 20px 0;
+  }
+}
+
+/* Opening Times Table */
+
+
+.k-store-times-table {
+  width: 100%;
+}
+
+.k-store-times-label {
+  display: inline-block;
+  padding-right: 1em;
+}
+
+/* Address Element */
+
+.k-footer-address-element {
+  .k-footer-address-line {
+    display: block;
+  }
+
+  .k-footer-address-line--company {
+    font-weight: bold;
+  }
+
+  .k-footer-address-line--owner {
+    padding: 10px 0;
+  }
+
+}
+
+.k-footer-phone-link {
+  display: block;
+  padding-bottom: 0.2rem;
+}
+
+/* Links */
+
+.k-footer a {
+  color: theme-color('text');
+
+  &:hover {
+    color: theme-color('brand3');
+  }
+}
+
+.k-footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1em;
+  padding: 1em 0;
+  text-align: center;
+
+  .k-footer-social-headline {
+    display: block;
+    margin-bottom: 1rem;
+    line-height: 1.5em;
+    width: 100%;
+  }
+
+  .k-contact-list {
+    font-size: 3em;
+  }
+
+  .k-contact-link {
+    margin: 0 $k-design-base-margin / 2;
+  }
+
+  .k-contact-item--address,
+  .k-contact-item--mail,
+  .k-contact-item--phone,
+  .k-contact-item--whatsapp {
+      display: none;
+  }
+}
+
+/* copyright  */
+
+.footer-copyright {
+  margin-bottom: $k-design-base-margin * 1.5;
+}
+
+/* Scroll up Button */
+.scroll-up-button.is-visible {
+  bottom: calc(80px);
+}
+

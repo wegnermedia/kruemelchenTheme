@@ -1,0 +1,61 @@
+{# @var navigation \Shopware\Core\Content\Category\Tree\Tree #}
+{% set activeId = navigation.active.id ?? context.salesChannel.navigationCategoryId %}
+{% set isRoot = activeId == context.salesChannel.navigationCategoryId %}
+{% set children = navigation.children(activeId) %}
+{% set active = navigation.active %}
+
+{% block layout_navigation_offcanvas_navigation_categories %}
+    <div class="navigation-offcanvas-container js-navigation-offcanvas">
+        <div class="navigation-offcanvas-overlay-content js-navigation-offcanvas-overlay-content">
+
+            <div class="k-mobile-nav">
+                <a class="k-mobile-nav-logo-link"
+                   href="https://www.deinkruemelchen.de"
+                   title="{{ "header.logoLink"|trans|striptags }}">
+                    <picture class="header-logo-picture">
+                        <img src="{{ theme_config('sw-logo-desktop') |sw_encode_url }}"
+                             alt="{{ "header.logoLink"|trans|striptags }}"
+                             class="k-mobile-nav-logo-img"/>
+                    </picture>
+                </a>
+            </div>
+
+
+
+            {% if not isRoot %}
+                {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/show-all-link.html.twig' %}
+
+                {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/active-item-link.html.twig' with { item: active } %}
+
+                {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/back-link.html.twig' with { item: active } %}
+
+            {#
+            {% else %}
+                {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/general-headline.html.twig' %}
+            #}
+
+            {% endif %}
+
+            <ul class="list-unstyled navigation-offcanvas-list">
+                {% if not isRoot and page.navigation.active.type != "folder" %}
+                    {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/show-active-link.html.twig' with { item: active } %}
+                {% endif %}
+
+                {# @var item \Shopware\Core\Content\Category\Tree\TreeItem #}
+                {% for item in children.tree %}
+                    {% sw_include '@Storefront/storefront/layout/navigation/offcanvas/item-link.html.twig' with { item: item, activeId: activeId } %}
+                {% endfor %}
+            </ul>
+
+            {#
+            <div class="k-mobile-nav">
+                <ul id="k-header-main-menu-list-mobile" class="k-header-main-menu-list k-header-main-menu-list--mobile">
+                    {% sw_include '@Storefront/storefront/elements/_mainmenu_items_left.html.twig' %}
+                    {% sw_include '@Storefront/storefront/elements/_mainmenu_items_right.html.twig' %}
+                </ul>
+            </div>
+            #}
+
+        </div>
+    </div>
+{% endblock %}

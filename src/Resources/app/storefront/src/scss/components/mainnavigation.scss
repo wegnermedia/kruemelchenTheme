@@ -1,0 +1,118 @@
+.k-header-main-menu-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.k-header-main-menu-list {
+  align-items: center;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
+  list-style-type: none;
+
+  .nav-item {
+    width: auto;
+    font-size: 1.25em;
+    margin-right: 2em;
+  }
+
+  .nav-item-link {
+    color: theme-color-level("text");
+    text-decoration: none;
+    padding-bottom: 8px;
+    border-bottom: 3px solid transparent;
+    transition: all .2s;
+
+    &:hover {
+      color: theme-color-level("primary");
+      border-color: theme-color-level("primary");
+    }
+  }
+
+  .nav-item--active .nav-item-link {
+    color: theme-color-level("primary");
+    border-color: theme-color-level("primary");
+    font-weight: bold;
+  }
+}
+
+/* Highlight the Shop Link */
+.k-header-main-menu-list .nav-item--shop .nav-item-link {
+  border: 1px solid theme-color-level("primary");
+  border-radius: 8px;
+  padding: 8px 16px;
+  top: -5px;
+}
+
+/* The Right side */
+.k-header-main-menu-list--right .nav-item {
+  margin-right: 1em;
+}
+
+/* Fix the last item in each Menu */
+.k-header-main-menu-list .nav-item:last-child {
+  margin-right: 0em;
+}
+
+/* Blog Style Item */
+.k-header-main-menu-list {
+  .nav-item--blog .nav-item-link {
+    font-style:italic;
+  }
+
+  .nav-item--sport .nav-item-link {
+    display: inline-block;
+    color: rgba(0,0,0,0);
+    width: 102px;
+    height: 20px;
+    background-image: theme-path("kruemelchen_sport_logo_textonly_102x20.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: theme-path("kruemelchen_sport_logo_dark_textonly_102x20.png");
+      border-color: transparent;
+    }
+  }
+}
+
+@media all and ( max-width: 1100px )
+{
+  .nav-item {
+    margin-right: 1em;
+  }
+  .k-header-main-menu-list .nav-item {
+    font-size: .8em;
+  }
+}
+
+/* Mobile Menu */
+.k-mobile-nav {
+  padding:20px;
+}
+
+.k-mobile-nav-logo-link {
+  display: block;
+  padding: 20px;
+
+  .k-mobile-nav-logo-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.k-header-main-menu-list--mobile {
+  flex-direction: column;
+  align-items: flex-start;
+
+  .nav-item {
+    margin-bottom: 25px;
+  }
+  .nav-item--divider {
+    display: none;
+  }
+}

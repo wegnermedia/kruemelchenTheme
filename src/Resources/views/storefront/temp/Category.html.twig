@@ -1,0 +1,111 @@
+1.Section: Category Intro
+volle breite
+kein padding
+
+1.1 Block:
+
+Twig Block
+{% sw_include '@Storefront/storefront/elements/_category_intro.html.twig'%}
+
+
+
+2. Section Product Listing
+.k-container k-container-product-listing
+
+2.1 Navigation
+padding: 30 20 0 20
+
+2.1 Product Listing
+
+3. Section Category Info
+.k-container k-category-description-container
+
+Twig Element
+HTML
+<h2>Was Du über <b>{{ page.header.navigation.active.name }}</b> wissen solltest:</h2>
+<div class="k-category-description-wrapper" id="k-category-description-wrapper">
+    {{ page.header.navigation.active.description|raw }}
+</div>
+
+JAVASCRIPT
+function splitContent(elementId) {
+const originalElement = document.getElementById(elementId);
+if (!originalElement) return;
+
+const originalContent = originalElement.innerHTML;
+const divWrapper = document.createElement('div');
+divWrapper.innerHTML = originalContent;
+
+const children = Array.from(divWrapper.children);
+const halfLength = Math.ceil(children.length / 2);
+const firstHalf = children.slice(0, halfLength);
+const secondHalf = children.slice(halfLength);
+
+const firstColumn = document.createElement('div');
+const secondColumn = document.createElement('div');
+
+firstHalf.forEach(child => firstColumn.appendChild(child));
+
+while (secondHalf[0] && secondHalf[0].outerHTML === '<p>&nbsp;</p>') {
+secondHalf.shift();
+}
+
+secondHalf.forEach(child => secondColumn.appendChild(child));
+
+originalElement.innerHTML = '';
+originalElement.appendChild(firstColumn);
+originalElement.appendChild(secondColumn);
+}
+
+window.onload = function() {
+splitContent('k-category-description-wrapper');
+};
+
+
+
+4. Section (Adjust Word Size)
+
+Twig Element
+
+JAVASCRIPT
+
+function adjustFontSizeForLongWords() {
+var productElements = document.getElementsByClassName("product-name");
+
+for (var i = 0; i < productElements.length; i++) {
+var element = productElements[i];
+
+var words = element.textContent.split(" ");
+
+for (var j = 0; j < words.length; j++) {
+var word = words[j];
+
+if (word.length > 16) {
+element.style.fontSize = "1.5em";
+break;
+}
+}
+}
+}
+
+// Function to run when the DOM is ready
+function onDOMReady() {
+adjustFontSizeForLongWords();
+
+// Create a MutationObserver to listen for DOM changes
+var observer = new MutationObserver(function () {
+adjustFontSizeForLongWords();
+});
+
+// Define what to observe (e.g., changes in the subtree, additions, removals)
+var config = { childList: true, subtree: true };
+
+// Start observing the document
+observer.observe(document, config);
+}
+
+// Add an event listener to run the onDOMReady function when the DOM is initially ready
+document.addEventListener("DOMContentLoaded", onDOMReady);
+
+
+

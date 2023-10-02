@@ -1,0 +1,19 @@
+{
+  "name": "wegnermedia/kruemelchen-theme",
+  "description": "Krümelchens Base Theme",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "version": "2.0.0",
+  "autoload": {
+    "psr-4": {
+      "WegnermediaKruemelchenBaseTheme\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "WegnermediaKruemelchenBaseTheme\\WegnermediaKruemelchenBaseTheme",
+    "label": {
+      "de-DE": "Theme Kruemelchen Base Plugin",
+      "en-GB": "Theme Kruemelchen Base Plugin"
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{# ------ Category Single ------ #}
+
+{% set master = page.header.navigation.active %}
+
+{% set customShortDescription = master.customFields['kurzbeschreibung'] %}
+{% set customBgColor = master.customFields['hintergrundfarbe'] %}
+{% set customIconUrl = master.customFields['icon_url'] %}
+{% set customIntroPrefix = master.customFields['prefix'] %}
+{% set customIntroHighlight = master.customFields['highlight'] %}
+{% set customIntroSuffix = master.customFields['suffix'] %}
+{% set customInfoTitle = master.customFields['info_titel'] %}
+{% set customInfoSubTitle = master.customFields['info_untertitel'] %}
+{% set customInfoDescription = master.customFields['info_beschreibung'] %}
+{% set customInfoImageUrl = master.customFields['info_bild_url'] %}
+{% set customInfoCtaShow = master.customFields['cta_button_anzeigen'] %}
+{% set customInfoCtaLabel = master.customFields['cta_button_label'] %}
+{% set customInfoCtaUrl = master.customFields['cta_button_url'] %}
+
+
+{# Create the Array that holds the path to the actual category #}
+{% set pathArray = master.path|split('|')|filter(item => item|length > 0) %}
+
+{# we hvae to add the current ID, throw out the first and then reverse the array #}
+{% set pathArray = pathArray|merge([master.id]) %}
+{% set pathArray = pathArray|slice(1, pathArray|length - 1) %}
+
+{%  set tree = page.header.navigation.tree %}
+
+
+
+    {# Get the last ones children ... #}
+    {% for treeID in pathArray %}
+        {% set master = tree[treeID].category %}
+        {% set tree = tree[treeID].children %}
+
+        {# Override the Custom Properties upwards #}
+        {% if master.customFields['kurzbeschreibung'] is not empty and customShortDescription is empty %}
+            {% set customShortDescription = master.customFields['kurzbeschreibung'] %}
+        {% endif %}
+        {% if master.customFields['hintergrundfarbe'] is not empty and customBgColor is empty %}
+            {% set customBgColor = master.customFields['hintergrundfarbe'] %}
+        {% endif %}
+        {% if master.customFields['icon_url'] is not empty and customIconUrl is empty %}
+            {% set customIconUrl = master.customFields['icon_url'] %}
+        {% endif %}
+        {% if master.customFields['prefix'] is not empty and customIntroPrefix is empty %}
+            {% set customIntroPrefix = master.customFields['prefix'] %}
+        {% endif %}
+        {% if master.customFields['highlight'] is not empty and customIntroHighlight is empty %}
+            {% set customIntroHighlight = master.customFields['highlight'] %}
+        {% endif %}
+        {% if master.customFields['suffix'] is not empty and customIntroSuffix is empty %}
+            {% set customIntroSuffix = master.customFields['suffix'] %}
+        {% endif %}
+        {% if master.customFields['info_titel'] is not empty and customInfoTitle is empty %}
+            {% set customInfoTitle = master.customFields['info_titel'] %}
+        {% endif %}
+        {% if master.customFields['info_untertitel'] is not empty and customInfoSubTitle is empty %}
+            {% set customInfoSubTitle = master.customFields['info_untertitel'] %}
+        {% endif %}
+        {% if master.customFields['info_beschreibung'] is not empty and customInfoDescription is empty %}
+            {% set customInfoDescription = master.customFields['info_beschreibung'] %}
+        {% endif %}
+        {% if master.customFields['info_bild_url'] is not empty and customInfoImageUrl is empty %}
+            {% set customInfoImageUrl = master.customFields['info_bild_url'] %}
+        {% endif %}
+        {% if master.customFields['cta_button_anzeigen'] is not empty and customInfoCtaShow is empty %}
+            {% set customInfoCtaShow = master.customFields['cta_button_anzeigen'] %}
+        {% endif %}
+        {% if master.customFields['cta_button_label'] is not empty and customInfoCtaLabel is empty %}
+            {% set customInfoCtaLabel = master.customFields['cta_button_label'] %}
+        {% endif %}
+        {% if master.customFields['cta_button_url'] is not empty and customInfoCtaUrl is empty %}
+            {% set customInfoCtaUrl = master.customFields['cta_button_url'] %}
+        {% endif %}
+        {# /Override the Custom Properties #}
+
+    {% endfor %}
+
+
+
+{# NOW WE HAVE THE CATEGORY MASTER READY #}
+
+<div class="k-category-header k-has-background">
+
+{%  sw_include '@Storefront/storefront/elements/_category_breadcrumbs.html.twig' with {
+    context: context,
+    category: page.header.navigation.active
+} %}
+
+    {# ###### HERO ###### #}
+    <section class="k-category-hero-section k-has-background">
+        <div class="boxed">
+            <div class="k-category-hero-content">
+
+                <header class="k-category-info-header k-box">
+                    <picture class="k-media-circle">
+                        <img src="{{ customIconUrl }}" class="k-media-circle-img" alt="krümelchen - shop - {{ page.header.navigation.active.translated.name | raw }}">
+                    </picture>
+                </header>
+                <h1 class="k-category-hero-title">{{ page.header.navigation.active.translated.name | raw }}</h1>
+                {% if customShortDescription %}
+                    <div class="k-category-hero-short-description">{{ customShortDescription | raw }}</div>
+                {% endif %}
+                <div class="k-category-hero-actions">
+                    <a href="#produkte" class="k-button k-button--outline-on-dark">
+                        <span class="k-button-label">direkt zu den Produkten</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {# Hero Background #}
+        <div class="k-background-wrapper" style="background-color: {{ customBgColor }};">
+
+            {% if page.header.navigation.active.media %}
+                {%  set img_url = page.header.navigation.active.media.url | raw %}
+            {% else %}
+                {% set img_url = 'https://deinkuemelchen.de/shop/media/84/71/23/1667670032/kruemelchen-kategorie-fallback.png' %}
+            {% endif %}
+            <picture class="k-background-media">
+                <img src="{{ img_url }}" class="k-background-img k-parallax" alt="{{ page.header.navigation.active.translated.name | raw }}" />
+            </picture>
+        </div>
+    </section>
+
+    {# ------ Optional: Sub Category Grid ------ #}
+    {%  set cat = {
+        id : page.header.navigation.active.id,
+        depth : page.header.navigation.active.breadcrumb|length
+    } %}
+
+    {#  Loop thru to get the last ones children #}
+    {% set sub_categories = page.header.navigation.tree %}
+
+    {%  if cat.depth == 2 %}
+        {# Root Category #}
+        {% set sub_categories = sub_categories[cat.id].children %}
+    {% else %}
+
+        {# Create the Array that holds the path to the actual category #}
+        {% set pathArray = page.header.navigation.active.path|split('|')|filter(item => item|length > 0) %}
+
+        {# we hvae to add the current ID, throw out the first and then reverse the array #}
+        {% set pathArray = pathArray|merge([cat.id]) %}
+        {% set pathArray = pathArray|slice(1, pathArray|length - 1) %}
+
+        {# Get the last ones children ... #}
+        {% for treeID in pathArray %}
+            {% set sub_categories = sub_categories[treeID].children %}
+        {% endfor %}
+
+    {% endif %}
+
+
+  {% if sub_categories != [] %}
+        <section class="k-category-info-section">
+            <div class="">
+                <div class="k-category-info-content">
+
+                    {# ------ Optional: Sub Category Grid ------ #}
+                    {% sw_include '@Storefront/storefront/elements/_sub_category_grid.html.twig' with {
+                        customBgColor : customBgColor,
+                        sub_categories : sub_categories
+                    } %}
+
+                </div>
+            </div>
+
+        </section>
+
+    {% endif %}
+
+    <div class="k-background-wrapper" style="background-color: {{ customBgColor }};"></div>
+
+    {# ------ Produkte Anchor ------ #}
+    <div id="produkte"></div>
+</div>

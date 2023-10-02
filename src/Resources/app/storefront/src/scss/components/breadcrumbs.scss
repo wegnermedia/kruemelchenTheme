@@ -1,0 +1,70 @@
+/*
+    --- Breadcrumbs ---
+ */
+
+.k-breadcrumb-wrapper {
+  //border-top: 1px solid theme-color('border');
+  //border-bottom: 1px solid theme-color('border');
+  //background-color: #ffffff;
+  width: 100%;
+  color: #ffffff;
+  z-index: 500;
+  text-transform: lowercase;
+  position: absolute;
+
+  .breadcrumb-item + .breadcrumb-item::before,
+  .breadcrumb a {
+    text-transform: lowercase;
+    color: #ffffff;
+  }
+
+}
+
+.k-breadcrumb-nav {
+  width: 100%;
+  padding-top: $k-design-base-margin / 3;
+  padding-bottom: $k-design-base-margin / 3;
+  margin-bottom: 0;
+
+  span {
+    color: #ffffff;
+    text-transform: lowercase;
+    font-size: $k-design-base-size-p;
+  }
+}
+
+.k-breadcrumb-items,
+.breadcrumb {
+  padding: 0;
+  margin-bottom: 0;
+
+
+}
+
+.k-breadcrumb-wrapper--product {
+  position: relative;
+  font-size: 10px;
+
+  .breadcrumb.cms-breadcrumb {
+    padding-left: 0;
+  }
+
+  .breadcrumb {
+    svg {
+      height: .6rem;
+    }
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before,
+  .breadcrumb a {
+    font-size: 12px;
+    color: theme-color('text');
+  }
+
+  .k-breadcrumb-nav {
+    span {
+      font-size: 12px;
+      color: theme-color('text');
+    }
+  }
+}

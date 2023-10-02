@@ -1,0 +1,17 @@
+{% if not color %}
+    {% set color = "#732050" %}
+{% endif %}
+
+{% block layout_navigation_offcanvas_navigation_home_link %}
+    <a class="nav-item nav-link is-home-link navigation-offcanvas-link js-navigation-offcanvas-link"
+       href="{{ path('frontend.menu.offcanvas') }}"
+       itemprop="url"
+       title="{{ "general.mainMenu"|trans|striptags }}">
+        <span
+            class="navigation-offcanvas-link-icon js-navigation-offcanvas-loading-icon"
+            style="background-color: {{ color }}">
+                {% sw_icon 'arrow-medium-left' style { 'pack':'solid', 'size': 'sm' } %}
+        </span>
+        <span itemprop="name">alle kategorien</span>
+    </a>
+{% endblock %}

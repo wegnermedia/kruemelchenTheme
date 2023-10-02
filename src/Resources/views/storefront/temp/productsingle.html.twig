@@ -1,0 +1,66 @@
+1. Section
+k-produkt k-container
+
+Product image
+Element einstellungen:
+Minimale Höhe: 75vh
+
+
+2. Section
+k-container k-container--spaced
+
+
+3. Section (Cross Selling)
+k-container
+
+4. Section
+twig element
+
+function splitContent(elementId) {
+const originalElement = document.getElementsByClassName(elementId)[0];
+
+console.log(originalElement);
+if (!originalElement) return;
+
+const originalContent = originalElement.innerHTML;
+const divWrapper = document.createElement('div');
+divWrapper.innerHTML = originalContent;
+
+
+const children = Array.from(divWrapper.children);
+const halfLength = Math.ceil(children.length / 2);
+
+console.log(children);
+
+return;
+
+
+const firstHalf = children.slice(0, halfLength);
+const secondHalf = children.slice(halfLength);
+
+console.log('First Half');
+console.log(firstHalf);
+
+console.log('Second Half');
+console.log(secondHalf);
+
+const firstColumn = document.createElement('div');
+const secondColumn = document.createElement('div');
+
+firstHalf.forEach(child => firstColumn.appendChild(child));
+
+while (secondHalf[0] && secondHalf[0].outerHTML === '<p>&nbsp;</p>') {
+secondHalf.shift();
+}
+
+secondHalf.forEach(child => secondColumn.appendChild(child));
+
+originalElement.innerHTML = '';
+originalElement.appendChild(firstColumn);
+originalElement.appendChild(secondColumn);
+}
+
+window.onload = function() {
+splitContent('product-detail-description-text');
+};
+

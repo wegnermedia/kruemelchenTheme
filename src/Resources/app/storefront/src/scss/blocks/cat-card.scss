@@ -1,0 +1,40 @@
+.k-cat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.k-cat-card-media {
+
+}
+
+.k-cat-card-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 256px;
+  object-fit: cover;
+  object-position: top;
+  transition: all .5s;
+  margin: 0 auto 0 auto;
+}
+
+.k-cat-card:hover {
+  text-decoration: none;
+
+  .k-cat-card-img {
+    object-position: bottom;
+  }
+}
+
+.k-cat-card-title {
+  font-size: .1em;
+  text-transform: lowercase;
+  font-weight: lighter;
+  position: absolute;
+  top: -1em;
+}
+
+.k-cat-card-subtitle {
+  color: theme-color('text');
+}

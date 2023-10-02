@@ -1,0 +1,11 @@
+<section class="k-adbar" style="background-color: {{ theme_config('k-werbung-topbar-bgcolor') }}; color: {{ theme_config('k-werbung-topbar-color') }};">
+    <div class="k-adbar-container container">
+        {% if theme_config('k-werbung-topbar-link') != '' %}
+            <a href="{{ theme_config('k-werbung-topbar-link') }}" class="k-adbar-link">
+                <h1 class="k-adbar-text">{{ theme_config('k-werbung-topbar-text') }}</h1>
+            </a>
+        {% else %}
+            <h1 class="k-adbar-text">{{ theme_config('k-werbung-topbar-text') }}</h1>
+        {% endif %}
+    </div>
+</section>

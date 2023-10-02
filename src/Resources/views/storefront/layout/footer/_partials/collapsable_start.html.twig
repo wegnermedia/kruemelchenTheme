@@ -1,0 +1,16 @@
+<div class="footer-column-headline footer-headline js-footer-column-headline js-collapse-footer-column-trigger"
+     id="{{ id }}"
+     data-target="#{{ target }}"
+     aria-expanded="true"
+     aria-controls="{{ target }}">{{ headline }}
+    <div class="footer-column-toggle">
+        <span class="footer-plus-icon">{% sw_icon 'plus' %}</span>
+        <span class="footer-minus-icon">{% sw_icon 'minus' %}</span>
+    </div>
+</div>
+
+<div id="{{ target }}"
+     class="footer-column-content collapse js-footer-column-content footer-contact"
+     aria-labelledby="{{ target }}Title">
+    <div class="footer-column-content-inner">
+

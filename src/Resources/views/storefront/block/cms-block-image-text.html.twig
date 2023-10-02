@@ -1,0 +1,366 @@
+<div class="k-main-categories">
+    {% for item in page.header.navigation.tree %}
+        {% set cat = item.category %}
+        <a href="{{ category_url(cat) }}" class="k-cat-card k-main-category-link">
+            <picture class="k-cat-card-media">
+                <img src="{{ cat.customFields['icon_effect_url'] }}" class="k-cat-card-img" alt="{{ cat.name }}">
+            </picture>
+            <h2 class="k-cat-card-title" style="color: {{ cat.customFields['hintergrundfarbe'] }};">{{ cat.name }}</h2>
+            {# <p class="k-cat-card-subtitle">{{ cat.subtitle }}</p> #}
+        </a>
+    {% endfor %}
+</div>
+
+
+
+{# keys as string #}
+{% set custom_teasers = {
+    'baby': {
+        'title'     : 'Baby',
+        'subtitle'  : 'Grundausstattung',
+        'text'      : '',
+        'img'       : 'https://deinkruemelchen.de/shop/media/e4/92/7b/1667587119/kruemelchen%20Kategorien%20Kombiniert.jpg',
+        'url'       : '#trageberatung',
+        'color'     : '#77904f'
+    }
+} %}
+
+<div class="k-teasers">
+    {% for teaser in custom_teasers %}
+        <article class="k-teaser">
+            <img src="{{ teaser.img }}" class="k-teaser-background" alt="{{ teaser.title }} - {{ teaser.subtitle }}">
+            <h1 class="k-teaser-title">{{ cat.title }}</h1>
+            <a href="{{ target.url }}" class="k-teaser-link">
+                <p class="k-main-cat-subtitle">{{ cat.subtitle }}</p>
+            </a>
+        </article>
+    {% endfor %}
+</div>
+
+
+
+
+{# ------ Category Standard Header ------ #}
+
+
+<header id="k-cat-active" class="k-cat-active k-cat-card">
+
+        <picture class="k-cat-card-media">
+            {% if page.header.navigation.active.media %}
+                {%  set img_url = page.header.navigation.active.media.url | raw %}
+            {% else %}
+                {% set img_url = 'https://deinkruemelchen.de/shop/media/84/71/23/1667670032/kruemelchen-kategorie-fallback.png' %}
+            {% endif %}
+            <img src="{{ img_url }}" class="k-cat-card-img" alt="{{ page.header.navigation.active.translated.name | raw }}" />
+        </picture>
+
+        <h1 class="k-cat-card-title">{{ page.header.navigation.active.translated.name | raw }}</h1>
+        {% if page.header.navigation.active.translated.description %}
+            <p class="k-cat-card-subtitle">{{ page.header.navigation.active.translated.description | raw }}</p>
+        {% endif %}
+
+
+</header>
+
+{# Display Subheader if subcategories #}
+{% set sub_categories = page.header.navigation.tree[page.header.navigation.active.id].children %}
+
+{% if sub_categories != [] %}
+    <section id="k-subcategories" class="k-subcategories">
+        {% for subcat in sub_categories %}
+            <a href="{{ category_url(subcat.category) }}" class="k-subcat-link">
+                <picture class="k-subcat-media">
+                    {% if subcat.category.media %}
+                        {%  set img_url =subcat.category.media.url | raw %}
+                    {% else %}
+                        {% set img_url = 'https://deinkruemelchen.de/shop/media/84/71/23/1667670032/kruemelchen-kategorie-fallback.png' %}
+                    {% endif %}
+                    <img src="{{ img_url }}" class="k-subcat-img" alt="{{ subcat.category.translated.name }}" />
+                </picture>
+                <h2 class="k-subcat-title">{{ subcat.category.translated.name }}</h2>
+            </a>
+        {% endfor %}
+    </section>
+{% endif %}
+
+
+
+
+{# ------ Category Single ------ #}
+
+{% set master = page.header.navigation.active %}
+
+{% set customShortDescription = master.customFields['kurzbeschreibung'] %}
+{% set customBgColor = master.customFields['hintergrundfarbe'] %}
+{% set customIconUrl = master.customFields['icon_url'] %}
+{% set customIntroPrefix = master.customFields['prefix'] %}
+{% set customIntroHighlight = master.customFields['highlight'] %}
+{% set customIntroSuffix = master.customFields['suffix'] %}
+{% set customInfoTitle = master.customFields['info_titel'] %}
+{% set customInfoSubTitle = master.customFields['info_untertitel'] %}
+{% set customInfoDescription = master.customFields['info_beschreibung'] %}
+{% set customInfoImageUrl = master.customFields['info_bild_url'] %}
+{% set customInfoCtaShow = master.customFields['cta_button_anzeigen'] %}
+{% set customInfoCtaLabel = master.customFields['cta_button_label'] %}
+{% set customInfoCtaUrl = master.customFields['cta_button_url'] %}
+
+{# get the root navigation element (level 2 #}
+{% for level in page.header.navigation.active.level..2 %}
+    {% if level != 2 %}
+        {% set master = page.header.navigation.tree[master.parentId].category %}
+
+        {# Override the Custom Properties upwards #}
+        {% if master.customFields['kurzbeschreibung'] is not empty and customShortDescription is empty %}
+            {% set customShortDescription = master.customFields['kurzbeschreibung'] %}
+        {% endif %}
+        {% if master.customFields['hintergrundfarbe'] is not empty and customBgColor is empty %}
+            {% set customBgColor = master.customFields['hintergrundfarbe'] %}
+        {% endif %}
+        {% if master.customFields['icon_url'] is not empty and customIconUrl is empty %}
+            {% set customIconUrl = master.customFields['icon_url'] %}
+        {% endif %}
+        {% if master.customFields['prefix'] is not empty and customIntroPrefix is empty %}
+            {% set customIntroPrefix = master.customFields['prefix'] %}
+        {% endif %}
+        {% if master.customFields['highlight'] is not empty and customIntroHighlight is empty %}
+            {% set customIntroHighlight = master.customFields['highlight'] %}
+        {% endif %}
+        {% if master.customFields['suffix'] is not empty and customIntroSuffix is empty %}
+            {% set customIntroSuffix = master.customFields['suffix'] %}
+        {% endif %}
+        {% if master.customFields['info_titel'] is not empty and customInfoTitle is empty %}
+            {% set customInfoTitle = master.customFields['info_titel'] %}
+        {% endif %}
+        {% if master.customFields['info_untertitel'] is not empty and customInfoSubTitle is empty %}
+            {% set customInfoSubTitle = master.customFields['info_untertitel'] %}
+        {% endif %}
+        {% if master.customFields['info_beschreibung'] is not empty and customInfoDescription is empty %}
+            {% set customInfoDescription = master.customFields['info_beschreibung'] %}
+        {% endif %}
+        {% if master.customFields['info_bild_url'] is not empty and customInfoImageUrl is empty %}
+            {% set customInfoImageUrl = master.customFields['info_bild_url'] %}
+        {% endif %}
+        {% if master.customFields['cta_button_anzeigen'] is not empty and customInfoCtaShow is empty %}
+            {% set customInfoCtaShow = master.customFields['cta_button_anzeigen'] %}
+        {% endif %}
+        {% if master.customFields['cta_button_label'] is not empty and customInfoCtaLabel is empty %}
+            {% set customInfoCtaLabel = master.customFields['cta_button_label'] %}
+        {% endif %}
+        {% if master.customFields['cta_button_url'] is not empty and customInfoCtaUrl is empty %}
+            {% set customInfoCtaUrl = master.customFields['cta_button_url'] %}
+        {% endif %}
+        {# /Override the Custom Properties #}
+
+    {% endif %}
+{% endfor %}
+
+{# NOW WE HAVE THE CATEGORY MASTER READY #}
+
+<div class="k-category-header k-has-background">
+
+    {%  if page.header.navigation.active %}
+        {% block cms_breadcrumb %}
+            <div class="k-breadcrumb-wrapper">
+                <div class="breadcrumb cms-breadcrumb container k-breadcrumb">
+                    {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                        context: context,
+                        category: page.header.navigation.active
+                    } only %}
+                </div>
+            </div>
+        {% endblock %}
+    {% endif %}
+
+    {# ###### HERO ###### #}
+    <section class="k-category-hero-section k-has-background">
+        <div class="boxed">
+            <div class="k-category-hero-content">
+
+                <header class="k-category-info-header k-box">
+                    <picture class="k-media-circle">
+                        <img src="{{ customIconUrl }}" class="k-media-circle-img" alt="krümelchen - shop - {{ page.header.navigation.active.translated.name | raw }}">
+                    </picture>
+                </header>
+
+                <h1 class="k-category-hero-title">{{ page.header.navigation.active.translated.name | raw }}</h1>
+                {% if customShortDescription %}
+                    <div class="k-category-hero-short-description">{{ customShortDescription | raw }}</div>
+                {% endif %}
+                <div class="k-category-hero-actions">
+                    <a href="#produkte" class="k-button k-button--outline-on-dark">
+                        <span class="k-button-label">direkt zu den Produkten</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {# Hero Background #}
+        <div class="k-background-wrapper" style="background-color: {{ customBgColor }};">
+            {% if page.header.navigation.active.media %}
+                {%  set img_url = page.header.navigation.active.media.url | raw %}
+            {% else %}
+                {% set img_url = 'https://deinkruemelchen.de/shop/media/84/71/23/1667670032/kruemelchen-kategorie-fallback.png' %}
+            {% endif %}
+            <picture class="k-background-media">
+                <img src="{{ img_url }}" class="k-background-img k-parallax" alt="{{ page.header.navigation.active.translated.name | raw }}" />
+            </picture>
+        </div>
+    </section>
+
+    <section class="k-category-info-section">
+        <div class="boxed">
+            <div class="k-category-info-content">
+
+                {% if page.header.navigation.active.level > 2 %}
+
+                    {% set parent = page.header.navigation.tree[page.header.navigation.active.parentId].category %}
+
+                    {# back to root Category if in depper level #}
+                    <div class="k-sub-categories k-sub-categories--single">
+                        <a href="{{ category_url(parent) }}" target="_self" class="k-sub-category-link k-has-background" style="color: {{ customBgColor }};">
+                            <h4 class="k-sub-category-title">zurück zur Kategorie "{{ parent.translated.name }}"</h4>
+
+                            <div class="k-background-wrapper" style="background-color: {{ customBgColor }};">
+                                <picture class="k-background-media">
+                                    {% if parent.media %}
+                                        {%  set img_url = parent.media.url | raw %}
+                                    {% else %}
+                                        {% set img_url = 'https://deinkruemelchen.de/shop/media/84/71/23/1667670032/kruemelchen-kategorie-fallback.png' %}
+                                    {% endif %}
+                                    <img src="{{ img_url }}" class="k-background-img" title="Hintergrundbild {{ parent.translated.name }}" alt="Hintergrundbild {{ parent.translated.name }}" />
+                                </picture>
+                            </div>
+                        </a>
+                    </div>
+                {% endif %}
+
+                {# ------ Optional: Sub Category Grid ------ #}
+                {% set sub_categories = page.header.navigation.tree[page.header.navigation.active.id].children %}
+
+                {% if sub_categories != [] %}
+                    <div class="k-sub-categories">
+                        {% for subcat in sub_categories %}
+                            <a href="{{ category_url(subcat.category) }}" target="_self" class="k-sub-category-link k-has-background" >
+                                <h4 class="k-sub-category-title">{{ subcat.category.translated.name }}</h4>
+                                {# Background #}
+
+
+                                <div class="k-background-wrapper k-background-wrapper--dynamic" style="background-color: {{ customBgColor }};">
+                                    <picture class="k-background-media">
+                                        {% if subcat.category.media %}
+                                            {%  set img_url =subcat.category.media.url | raw %}
+                                        {% else %}
+                                            {% set img_url = 'https://deinkruemelchen.de/shop/media/84/71/23/1667670032/kruemelchen-kategorie-fallback.png' %}
+                                        {% endif %}
+                                        <img src="{{ img_url }}" class="k-background-img" title="Hintergrundbild {{ subcat.category.translated.name }}" alt="Hintergrundbild {{ subcat.category.translated.name }}" />
+                                    </picture>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if customInfoTitle is not empty %}
+                    <div class="k-category-finalinfos">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12 k-category-finalinfos-media-wrapper">
+                                <picture class="k-category-info-media">
+                                    <img src="{{ customInfoImageUrl }}" alt="Kategorie {{ page.header.navigation.active.translated.name | raw }}">
+                                </picture>
+                            </div>
+
+                            <div class="col-md-6 col-sm-12 k-category-finalinfos-content-wrapper">
+                                <div class="k-category-finalinfos-content">
+                                    <h2 class="k-category-info-title">{{ customInfoTitle }}</h2>
+
+                                    {% if customInfoSubTitle is not empty %}
+                                        <h3 class="k-category-finalinfos-subtitle">{{ customInfoSubTitle | raw }}</h3>
+                                    {% endif %}
+
+                                    {% if customInfoDescription is not empty %}
+                                        <div class="k-category-finalinfos-description">
+                                            {{ customInfoDescription | raw }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if customInfoCtaShow %}
+                                        <div class="k-category-finalinfos-actions">
+                                            <a href="{{ customInfoCtaUrl | raw }}" class="k-button k-button--default">
+                                                <span class="k-button-label">{{ customInfoCtaLabel | raw }}</span>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="k-background-wrapper" style="background-color: {{ customBgColor }};"></div>
+
+    {# ------ Produkte Anchor ------ #}
+    <div id="produkte"></div>
+</div>
+
+
+
+{% set beratungen = {
+    'trageberatung' : {
+        'name' : 'Trageberatung',
+        'beschreibung' : 'Alle unsere Tragen und Tragetücher können im Rahmen einer kostenlosen Beratung innerhalb der regulären Öffnungszeiten ausgiebig getestet werden. Beratungen außerhalb der Öffnungszeiten sind Kostenpflichtig. Hierfür benötigt ihr zwingend einen individuell vereinbarten Termin.',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/8b/0a/e1/1668606905/MY2022%20800x560%20NXT90.jpg',
+        'target_url': 'https://deinkruemelchen.de/beratung/',
+        'size' : 1
+    },
+    'kindersitzberatung' : {
+        'name' : 'Kindersitzberatung',
+        'beschreibung' : 'Für eine Kindersitzberatung bitten wir euch, einen Termin zu vereinbaren. Wir nehmen uns hier, inkl. Probesitzen und Testeinbau in euren Fahrzeugen, für euch alleine ausgiebig Zeit. Nutzt hier bitte unseren Link zu unserem Onlinekalender von Terminland.',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/8b/0a/e1/1668606905/MY2022%20800x560%20NXT90.jpg',
+        'target_url': 'https://deinkruemelchen.de/deine-kindersitzexperten/',
+        'size' : 2
+    },
+    'Kinderwagenberatung' : {
+        'name' : 'Kinderwagenberatung',
+        'beschreibung' : 'Wünscht ihr eine Kinderwagenberatung inkl. Testen des Wagens auf verschiedenen Untergründen? Oder einen Test, ob der Kinderwagen bei euch in euer Fahrzeug passt? So bitten wir euch hier ebenfalls einen Termin zu vereinbaren, damit wir sicherstellen können, dass an diesem Tag jemand für euch ausreichend Zeit hat, um all eure Fragen zu beantworten.',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/8b/0a/e1/1668606905/MY2022%20800x560%20NXT90.jpg',
+        'target_url': 'https://deinkruemelchen.de/beratung/',
+        'size' : 1
+    },
+    'babyschale' : {
+        'name' : 'Babyschalen Leihaktion',
+        'beschreibung' : 'Weil kein Kindersitz ohne Probeliegen und Probeeinbau gekauft werden sollte, liegt uns die Babyschalen-Aktion sehr am Herzen!',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/8b/0a/e1/1668606905/MY2022%20800x560%20NXT90.jpg',
+        'target_url': 'https://deinkruemelchen.de/deine-kindersitzprofis/#babyschalen',
+        'size' : 2
+    }
+}
+%}
+
+
+<div class="k-beratungen-grid k-sub-categories">
+    {% for beratung in beratungen %}
+        <a href="{{ beratung.target_url }}" target="_self" class="k-beratung-link k-sub-category-link k-has-background" >
+            <h2 class="k-sub-category-title">{{ beratung.name }}</h2>
+            {# Background #}
+
+            <div class="k-background-wrapper k-background-wrapper--dynamic" style="background-color: {{ beratung.color }};">
+                <picture class="k-background-media">
+                    <img src="{{ beratung.img_url }}" class="k-background-img" title="Hintergrundbild {{ beratung.name }}" alt="Hintergrundbild {{ beratung.name }}" />
+                </picture>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+
+
+

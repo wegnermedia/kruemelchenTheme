@@ -1,0 +1,87 @@
+# Startseite
+
+1. Section: Advanced Slider
+
+2. Section (Category Grid)
+.k-container
+bg color #ffffff
+
+Content:
+padding: 20px
+{% sw_include '@Storefront/storefront/elements/_main_category_grid.html.twig' with {} %}
+
+3. Section (Personal Highlights)
+bgcolor: #f9f6f8
+
+3.1 Block:
+
+zentriert
+
+Content:
+unsere persönlichen Highlights
+Aus unserem gesamten krümelchen Sortiment für Babys, Kinder, Mamas, Kinderwagen, Kindersitze, Schulranzen und vielem mehr. Viel spaß beim stöbern.
+
+3.2 Block:
+
+Content
+Dynamische Produktgruppe (Lager = 1)
+Überschrift: Unsere persönlichen Highlights
+
+4. Section: Beratungsgrid
+
+4.1 Block
+padding: 75px 20px 20px 20px;
+
+content:
+{% set beratungen = {
+    'trageberatung' : {
+        'name' : 'Trageberatung',
+        'beschreibung' : 'Alle unsere Tragen und Tragetücher können im Rahmen einer kostenlosen Beratung innerhalb der regulären Öffnungszeiten ausgiebig getestet werden. Beratungen außerhalb der Öffnungszeiten sind Kostenpflichtig. Hierfür benötigt ihr zwingend einen individuell vereinbarten Termin.',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/36/ae/b7/1692722117/35091.jpeg',
+        'target_url': 'https://deinkruemelchen.de/beratung/',
+    },
+    'kindersitzberatung' : {
+        'name' : 'Kindersitzberatung',
+        'beschreibung' : 'Für eine Kindersitzberatung bitten wir euch, einen Termin zu vereinbaren. Wir nehmen uns hier, inkl. Probesitzen und Testeinbau in euren Fahrzeugen, für euch alleine ausgiebig Zeit. Nutzt hier bitte unseren Link zu unserem Onlinekalender von Terminland.',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/g0/6a/a1/1692722118/AxkidONE2.jpeg',
+        'target_url': 'https://deinkruemelchen.de/deine-kindersitzexperten/',
+    },
+    'Kinderwagenberatung' : {
+        'name' : 'Kinderwagenberatung',
+        'beschreibung' : 'Wünscht ihr eine Kinderwagenberatung inkl. Testen des Wagens auf verschiedenen Untergründen? Oder einen Test, ob der Kinderwagen bei euch in euer Fahrzeug passt? So bitten wir euch hier ebenfalls einen Termin zu vereinbaren, damit wir sicherstellen können, dass an diesem Tag jemand für euch ausreichend Zeit hat, um all eure Fragen zu beantworten.',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/d0/ae/96/1692722118/Joie-Aeria-Kinderwagen-gunstig.jpeg',
+        'target_url': 'https://deinkruemelchen.de/beratung/',
+    },
+    'babyschale' : {
+        'name' : 'Babyschalen Leihaktion',
+        'beschreibung' : 'Weil kein Kindersitz ohne Probeliegen und Probeeinbau gekauft werden sollte, liegt uns die Babyschalen-Aktion sehr am Herzen!',
+        'color' : '#732050',
+        'img_url' : 'https://deinkruemelchen.de/shop/media/2d/73/76/1692722118/Avionaut_Pixelwebp.webp',
+        'target_url': 'https://deinkruemelchen.de/deine-kindersitzexperten/#babyschalen',
+    }
+}
+%}
+
+{% sw_include '@Storefront/storefront/elements/_beratung_grid.html.twig' with {
+    beratungen: beratungen
+} only %}
+
+
+5. Section: Schnell sein
+
+bgcolor: #f9f6f8
+
+5.1 Block:
+center
+
+content:
+
+jetzt aber schnell
+nur noch wenige Artikel verfügbar
+
+
+5.2 Block: dynamische Produktgruppe
+

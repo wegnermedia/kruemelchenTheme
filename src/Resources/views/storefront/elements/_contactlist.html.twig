@@ -1,0 +1,54 @@
+<ul class="k-contact-list">
+    <li class="k-contact-item k-contact-item--address">
+        <a href="{{ theme_config('k-address-google-link') }}"
+           class="k-contact-link"
+           title="Unsere Adresse: {{ theme_config('k-address-street') }} • {{ theme_config('k-address-postal') }} {{ theme_config('k-address-city') }}"
+           target="_blank">
+            <i class="fa-solid fa-location-dot k-icon"></i>
+        </a>
+    </li>
+    <li class="k-contact-item k-contact-item--mail">
+        <a href="/kontakt"
+           class="k-contact-link"
+           title="Zu unserer Kontaktseite.">
+            <span class="far fa-envelope k-icon"></span>
+        </a>
+    </li>
+    <li class="k-contact-item k-contact-item--phone">
+        <a href="tel:{{ phoneUrl(theme_config('k-contact-phone-number')) }}"
+           class="k-contact-link"
+           title="{{ theme_config('k-contact-phone-label') }}">
+            <span class="fas fa-phone k-icon"></span>
+        </a>
+    </li>
+    <li class="k-contact-item k-contact-item--whatsapp">
+        <a href="{{ whatsAppUrl(theme_config('k-contact-whatsapp-number'), theme_config('k-contact-whatsapp-message')) }}"
+           class="k-contact-link"
+           title="{{ theme_config('k-contact-whatsapp-label') }}"
+           target="_blank">
+            <span class="fab fa-whatsapp k-icon"></span>
+        </a>
+    </li>
+
+    {% if theme_config('k-social-instagram-show') %}
+        <li class="k-contact-item k-contact-item--insta">
+            <a href="{{ theme_config('k-social-instagram-link') }}"
+               class="k-contact-link"
+               title="{{ theme_config('k-social-instagram-label') }}"
+               target="_blank">
+                <span class="fab fa-instagram k-icon"></span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if theme_config('k-social-facebook-show') %}
+        <li class="k-contact-item k-contact-item--facebook">
+            <a href="{{ theme_config('k-social-facebook-link') }}"
+               class="k-contact-link"
+               title="{{ theme_config('k-social-facebook-label') }}"
+               target="_blank">
+                <span class="fab fa-facebook k-icon"></span>
+            </a>
+        </li>
+    {% endif %}
+</ul>

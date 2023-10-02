@@ -1,0 +1,701 @@
+{
+  "name": "WegnermediaKruemelchenBaseTheme",
+  "author": "WEGNER MEDIA SPORTS & KIDS | Stefan Wegner",
+  "views": [
+     "@Storefront",
+     "@Plugins",
+     "@WegnermediaKruemelchenBaseTheme"
+  ],
+  "style": [
+    "app/storefront/src/scss/overrides.scss",
+    "@Storefront",
+    "app/storefront/src/scss/base.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/wegnermedia-kruemelchen-base-theme.js"
+  ],
+  "asset": [
+    "@Storefront",
+    "app/storefront/src/assets"
+  ],
+  "config": {
+    "tabs": {
+      "k-kruemelchen":  { "label": { "de-DE": "Krümelchen" } },
+      "k-sport":        { "label": { "de-DE": "Krümelchen SPORT" } },
+      "k-werbung":      { "label": { "de-DE": "Werbung" } },
+      "k-blog":         { "label": { "de-DE": "Blog" } },
+      "k-design":       { "label": { "de-DE": "Design" } },
+      "k-startseite":   { "label": { "de-DE": "Startseite" } }
+    },
+
+    "blocks": {
+      "k-basics":           { "label": { "de-DE": "Basics" }},
+      "k-address":          { "label": { "de-DE": "Adresse" }},
+      "k-hours":            { "label": { "de-DE": "Öffnungszeiten" }},
+      "k-contact":          { "label": { "de-DE": "Kontakt" }},
+      "k-social":           { "label": { "de-DE": "Social Media" }},
+      "k-story":            { "label": { "de-DE": "Story" }},
+      "k-support":          { "label": { "de-DE": "Förderung" }},
+      "k-werbung-topbar":   { "label": { "de-DE": "Kopfbereich" }},
+      "k-blog-basics":      { "label": { "de-DE": "Kopfbereich" }},
+      "k-design-basics":      { "label": { "de-DE": "Basics" }},
+      "k-design-hero":      { "label": { "de-DE": "Hero Einstellungen" }},
+      "k-startseite-hero":      { "label": { "de-DE": "Startseite Hero Einstellungen" }}
+
+
+    },
+
+    "sections": {
+      "k-section-facebook":          { "label": { "de-DE": "Facebook" }},
+      "k-section-instagram":         { "label": { "de-DE": "Instagram" }},
+      "k-section-design-basics":     { "label": { "de-DE": "Abstände" }},
+      "k-section-hero-startseite":   { "label": { "de-DE": "Startseite" }}
+    },
+
+    "fields":{
+
+      "k-startseite-hero-image-url": {
+        "label": {
+          "de-DE": "Hero Bild"
+        },
+        "type": "media",
+        "editable": true,
+        "tab": "k-startseite",
+        "block": "k-startseite-hero",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+
+      "k-basics-name": {
+        "label": {
+          "de-DE": "Name"
+        },
+        "type": "text",
+        "value": "krümelchen",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-basics",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-basics-claim": {
+        "label": {
+          "de-DE": "Claim"
+        },
+        "type": "text",
+        "value": "deine trage- und kindersitzprofis",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-basics",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-basics-owner": {
+        "label": {
+          "de-DE": "Eigentümer / Verantwortlicher"
+        },
+        "type": "text",
+        "value": "Inga Küpper",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-basics",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+      "k-address-headline": {
+        "label": {
+          "de-DE": "Überschrift im Footer"
+        },
+        "type": "text",
+        "value": "Adressen & Kontakt",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-address",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-address-street": {
+        "label": {
+          "de-DE": "Straße & Hausnummer"
+        },
+        "type": "text",
+        "value": "Düsseldorfer Straße 9",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-address",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-address-info": {
+        "label": {
+          "de-DE": "Zusatz"
+        },
+        "type": "text",
+        "value": "",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-address",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-address-postal": {
+        "label": {
+          "de-DE": "PLZ"
+        },
+        "type": "text",
+        "value": "45481",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-address",
+        "scss": false
+      },
+      "k-address-city": {
+        "label": {
+          "de-DE": "Stadt"
+        },
+        "type": "text",
+        "value": "Mülheim an der Ruhr",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-address",
+        "scss": false
+      },
+      "k-address-google-link": {
+        "label": {
+          "de-DE": "Google Link"
+        },
+        "type": "text",
+        "value": "https://www.google.com/maps/dir/''/kr%C3%BCmelchen+-+Deine+Trage-+und+Kindersitzprofis+im+Ruhrgebiet.,+D%C3%BCsseldorfer+Stra%C3%9Fe,+M%C3%BClheim+an+der+Ruhr/@51.4027416,6.8088809,12z/data=!3m2!4b1!5s0x47b8c1495f54f19b:0xdcacef0ed830e3fc!4m8!4m7!1m0!1m5!1m1!1s0x47b8c14be1e86365:0x296dd295da6e7667!2m2!1d6.8789206!2d51.4027625",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-address",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+      "k-hours-headline": {
+        "label": {
+          "de-DE": "Überschrift im Footer"
+        },
+        "type": "text",
+        "value": "Öffnungszeiten",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "fullWidth" : true,
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-montag": {
+        "label": {"de-DE": "Montag"},
+        "type": "text",
+        "value": "Ruhetag",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-dienstag": {
+        "label": {"de-DE": "Dienstag"},
+        "type": "text",
+        "value": "10:00 bis 18:00 Uhr",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-mittwoch": {
+        "label": {"de-DE": "Mittwoch"},
+        "type": "text",
+        "value": "10:00 bis 18:00 Uhr",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-donnerstag": {
+        "label": {"de-DE": "Donnerstag"},
+        "type": "text",
+        "value": "10:00 bis 18:00 Uhr",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-freitag": {
+        "label": {"de-DE": "Freitag"},
+        "type": "text",
+        "value": "10:00 bis 18:00 Uhr",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-samstag": {
+        "label": {"de-DE": "Samstag"},
+        "type": "text",
+        "value": "10:00 bis 13:00 Uhr",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-online": {
+        "label": {"de-DE": "Online"},
+        "type": "text",
+        "value": "Rund um die Uhr",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-info-show": {
+        "label": {"de-DE": "Hinweis zu Öffnungszeiten anzeigen?"},
+        "type": "switch",
+        "value": false,
+        "editable": true,
+        "fullwidth": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-info-headline": {
+        "label": {"de-DE": "Hinweistext zu Öffnungszeiten"},
+        "type": "textarea",
+        "value": "ACHTUNG!",
+        "editable": true,
+        "fullwidth": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+      "k-hours-info-text": {
+        "label": {"de-DE": "Hinweistext zu Öffnungszeiten"},
+        "type": "textarea",
+        "value": "Wir haben Betriebsferien und haben vom 11.10 bis 18.10.2021 geschlossen.",
+        "editable": true,
+        "fullwidth": true,
+        "tab": "k-kruemelchen",
+        "block": "k-hours",
+        "scss": false
+      },
+
+      "k-contact-headline": {
+        "label": {
+          "de-DE": "Überschrift im Footer"
+        },
+        "type": "text",
+        "value": "Adresse & Kontakt",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-contact-mail-address": {
+        "label": {
+          "de-DE": "Öffentliche Mailadresse"
+        },
+        "type": "text",
+        "value": "mail@deinkruemelchen.de",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : false,
+        "scss": false
+      },
+      "k-contact-mail-label": {
+        "label": {
+          "de-DE": "Mail Call-to-Action"
+        },
+        "type": "text",
+        "value": "Schreib uns gerne eine Mail.",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : false,
+        "scss": false
+      },
+      "k-contact-phone-number": {
+        "label": {
+          "de-DE": "Telefonnummer im Format: +49 (0) 208 / 741 150 90"
+        },
+        "type": "text",
+        "value": "+49 (0) 208 / 741 150 90",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : false,
+        "scss": false
+      },
+      "k-contact-phone-label": {
+        "label": {
+          "de-DE": "Telefon Call-to-Action"
+        },
+        "type": "text",
+        "value": "Ruf uns gerne an.",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : false,
+        "scss": false
+      },
+      "k-contact-whatsapp-number": {
+        "label": {
+          "de-DE": "WhatsApp im Format: +49 (0) 151 / 561 218 92"
+        },
+        "type": "text",
+        "value": "+49 (0) 151 / 561 218 92",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : false,
+        "scss": false
+      },
+      "k-contact-whatsapp-label": {
+        "label": {
+          "de-DE": "WhatsApp Call-to-Action"
+        },
+        "type": "text",
+        "value": "Ruf uns gerne an.",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : false,
+        "scss": false
+      },
+      "k-contact-whatsapp-message": {
+        "label": {
+          "de-DE": "WhatsApp Vorausgefüllt - aus der Kundenperspektive"
+        },
+        "type": "textarea",
+        "value": "Hallo krümelchen, \n\n",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-contact",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+      "k-social-headline": {
+        "label": { "de-DE": "Social Media Headline"},
+        "type": "text",
+        "value": "Besuche uns auf unseren Social Media Kanälen",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-social",
+        "fullWidth":true,
+        "scss": false
+      },
+      "k-social-facebook-show": {
+        "label": {
+          "de-DE": "Facebook anzeigen?"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-social",
+        "section": "k-section-facebook",
+        "scss": false
+      },
+      "k-social-facebook-label": {
+        "label": {
+          "de-DE": "Facebook Label"
+        },
+        "type": "text",
+        "value": "Besuche uns auf Facebook",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-social",
+        "section": "k-section-facebook",
+        "scss": false
+      },
+      "k-social-facebook-link": {
+        "label": {
+          "de-DE": "Facebook Link"
+        },
+        "type": "url",
+        "value": "https://www.facebook.com/deinkruemelchen.de/",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-social",
+        "fullWidth": true,
+        "section": "k-section-facebook",
+        "scss": false
+      },
+
+      "k-social-instagram-show": {
+        "label": {
+          "de-DE": "Instagram anzeigen?"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-social",
+        "section": "k-section-instagram",
+        "scss": false
+      },
+      "k-social-instagram-label": {
+        "label": {
+          "de-DE": "Instagram Label"
+        },
+        "type": "text",
+        "value": "Besuche uns auf Instagram",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-social",
+        "section": "k-section-instagram",
+        "scss": false
+      },
+      "k-social-instagram-link": {
+        "label": {
+          "de-DE": "Instagram Link"
+        },
+        "type": "url",
+        "value": "https://www.instagram.com/deinkruemelchen.de/",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-social",
+        "fullWidth": true,
+        "section": "k-section-instagram",
+        "scss": false
+      },
+
+      "k-story-headline": {
+        "label": {
+          "de-DE": "Überschrift im Footer"
+        },
+        "type": "text",
+        "value": "Das ist krümelchen",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-story",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-story-text": {
+        "label": {
+          "de-DE": "Kurzbeschreibung krümelchen"
+        },
+        "type": "textarea",
+        "value": "Wir als deine Trage- und Kindersitzprofis im Ruhrgebiet, in Mülheim an der Ruhr, sind eure Anlaufadresse für professionelle Beratungen rund um das Tragen und dem sicheren Transport eurer Kinder.\n\nWir führen auch Kinder -und Sportwagen. Diesen Bereich bauen wir gerade für euch auf. Zur Zeit führen wir u.a. Nuna, TFK, Qeridoo, Joie, Britax Römer, Hartan.\n\nZudem findet ihr bei uns eine große Auswahl an Zubehör z.B. Tragejacken für Mamas (für die Schwangerschaft und Tragezeit) und für Papas für jede Jahreszeit, handgenähte Lederkrabbel -und Barfußschuhe sowie Kindersitzzubehör.",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-story",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+      "k-support-headline": {
+        "label": {
+          "de-DE": "Überschrift im Footer"
+        },
+        "type": "text",
+        "value": "Unterstützt durch",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-support",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-support-text": {
+        "label": {
+          "de-DE": "Text"
+        },
+        "type": "textarea",
+        "value": "Diese Website wurde im Rahmen der Corona Hilfe durch das Land Nordrhein-Westfalen gefördert.",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-support",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-support-link": {
+        "label": {
+          "de-DE": "Link"
+        },
+        "type": "url",
+        "value": "https://www.land.nrw/de",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-support",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-support-link-title": {
+        "label": {
+          "de-DE": "Link Text bei Hover"
+        },
+        "type": "text",
+        "value": "Unterstützt duch das Land Nordrhein-Westfalen",
+        "editable": true,
+        "tab": "k-kruemelchen",
+        "block": "k-support",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+      "k-werbung-topbar-show": {
+        "label": {
+          "de-DE": "Werbeblock in Kopfzeile anzeigen?"
+        },
+        "type": "switch",
+        "value": true,
+        "editable": true,
+        "tab": "k-werbung",
+        "block": "k-werbung-topbar",
+        "fullWidth" : true
+      },
+      "k-werbung-topbar-bgcolor": {
+        "label": {
+          "de-DE": "Hintergrundfarbe"
+        },
+        "type": "color",
+        "value": "#732050",
+        "editable": true,
+        "tab": "k-werbung",
+        "block": "k-werbung-topbar",
+        "scss": false
+      },
+      "k-werbung-topbar-color": {
+        "label": {
+          "de-DE": "Textfarbe"
+        },
+        "type": "color",
+        "value": "#ffffff",
+        "editable": true,
+        "tab": "k-werbung",
+        "block": "k-werbung-topbar",
+        "scss": false
+      },
+      "k-werbung-topbar-text": {
+        "label": {
+          "de-DE": "Text im Werbeblock"
+        },
+        "type": "text",
+        "value": "Wir verzichten auf Black Friday Rabatte! Erfahre hier warum.",
+        "editable": true,
+        "tab": "k-werbung",
+        "block": "k-werbung-topbar",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-werbung-topbar-link": {
+        "label": {
+          "de-DE": "Link wohin die Werbung gehen soll (wenn es kein Link sein soll, einfach leer lassen)"
+        },
+        "type": "url",
+        "value": "/",
+        "editable": true,
+        "tab": "k-werbung",
+        "block": "k-werbung-topbar",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+      "k-blog-slug": {
+        "label": {
+          "de-DE": "Url des Blogs, Standard ist 'blog'"
+        },
+        "type": "text",
+        "value": "blog",
+        "editable": true,
+        "tab": "k-blog",
+        "block": "k-blog-basics",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-blog-detail-backlink-text": {
+        "label": {
+          "de-DE": "Linktext beim 'zurück Button' in der Detailansicht"
+        },
+        "type": "text",
+        "value": "< Zurück zum krümelchen Blog",
+        "editable": true,
+        "tab": "k-blog",
+        "block": "k-blog-basics",
+        "fullWidth" : true,
+        "scss": false
+      },
+      "k-blog-detail-backlink-text-bottom": {
+        "label": {
+          "de-DE": "Linktext beim 'zurück Button' unten in der Detailansicht"
+        },
+        "type": "text",
+        "value": "Vielen Dank fürs Lesen, hier kommst Du zurück zum krümelchen Blog",
+        "editable": true,
+        "tab": "k-blog",
+        "block": "k-blog-basics",
+        "fullWidth" : true,
+        "scss": false
+      },
+
+      "k-design-hero-startseite-color": {
+        "label": {
+          "de-DE": "Textfarbe"
+        },
+        "type": "color",
+        "value": "#ffffff",
+        "editable": true,
+        "tab": "k-design",
+        "block": "k-design-hero",
+        "section": "k-section-hero-startseite",
+        "scss": true
+      },
+
+      "k-design-base-margin": {
+        "label": {
+          "de-DE": "Reguläre Abstände"
+        },
+        "type": "text",
+        "value": "50px",
+        "editable": true,
+        "tab": "k-design",
+        "block": "k-design-basics",
+        "section": "k-section-design-basics",
+        "scss": true
+      },
+
+      "k-design-base-size-h2": {
+        "label": {
+          "de-DE": "H2 Fontsize"
+        },
+        "type": "text",
+        "value": "40px",
+        "editable": true,
+        "tab": "k-design",
+        "block": "k-design-basics",
+        "section": "k-section-design-basics",
+        "scss": true
+      },
+      "k-design-base-size-p": {
+        "label": {
+          "de-DE": "P Fontsize"
+        },
+        "type": "text",
+        "value": "18px",
+        "editable": true,
+        "tab": "k-design",
+        "block": "k-design-basics",
+        "section": "k-section-design-basics",
+        "scss": true
+      },
+      "k-design-base-size-btn": {
+        "label": {
+          "de-DE": "BTN Fontsize"
+        },
+        "type": "text",
+        "value": "18px",
+        "editable": true,
+        "tab": "k-design",
+        "block": "k-design-basics",
+        "section": "k-section-design-basics",
+        "scss": true
+      }
+    }
+  }
+}

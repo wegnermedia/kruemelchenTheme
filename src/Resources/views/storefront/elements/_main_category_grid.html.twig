@@ -1,0 +1,12 @@
+<div class="k-main-categories">
+    {% for item in page.header.navigation.tree %}
+        {% set cat = item.category %}
+        <a href="{{ category_url(cat) }}" class="k-cat-card k-main-category-link">
+            <picture class="k-cat-card-media">
+                <img src="{{ cat.customFields['icon_effect_url'] }}" class="k-cat-card-img" alt="{{ cat.name }}">
+            </picture>
+            <h2 class="k-cat-card-title" style="color: {{ cat.customFields['hintergrundfarbe'] }};">{{ cat.name }}</h2>
+            {# <p class="k-cat-card-subtitle">{{ cat.subtitle }}</p> #}
+        </a>
+    {% endfor %}
+</div>

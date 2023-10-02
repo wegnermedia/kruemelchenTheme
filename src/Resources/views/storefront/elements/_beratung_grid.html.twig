@@ -1,0 +1,14 @@
+<div class="k-beratungen-grid k-sub-categories">
+    {% for beratung in beratungen %}
+        <a href="{{ beratung.target_url }}" target="_self" class="k-beratung-link k-sub-category-link k-has-background">
+            <h2 class="k-sub-category-title">{{ beratung.name }}</h2>
+            {# Background #}
+
+            <div class="k-background-wrapper k-background-wrapper--dynamic" style="background-color: {{ beratung.color }};">
+                <picture class="k-background-media">
+                    <img src="{{ beratung.img_url }}" class="k-background-img" title="Hintergrundbild {{ beratung.name }}" alt="Hintergrundbild {{ beratung.name }}" />
+                </picture>
+            </div>
+        </a>
+    {% endfor %}
+</div>

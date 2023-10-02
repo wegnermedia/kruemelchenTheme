@@ -1,0 +1,191 @@
+/* Breadcrumbs */
+
+.is-act-home {
+
+  .k-breadcrumb-nav {
+    display: none;
+  }
+
+}
+
+
+/* Corona Section */
+
+.k-corona-update {
+  padding: $k-design-base-margin 0 $k-design-base-margin;
+
+  h2, p, span {
+    color: theme-color('primary');
+  }
+}
+
+/* Highlights */
+
+.k-hero-text--highlights {
+  margin-bottom: 0px;
+}
+
+.is-act-home {
+  .cms-element-product-slider {
+
+    margin-bottom: $k-design-base-margin;
+
+    .cms-element-title {
+      display: none;
+    }
+
+
+  }
+}
+
+/* Krümelversum Abschnitt */
+
+.k-startseite-kruemelversum-item:nth-child(even) .cms-block-container-row {
+  flex-direction: row-reverse;
+}
+
+.k-startseite-kruemelversum-item {
+  margin-bottom: $k-design-base-margin * 2;
+
+  p:first-child {
+    margin-bottom:0px;
+  }
+}
+
+.k-startseite-kruemelversum-item {
+
+  &.item--sport {
+    h2, h2 * {
+      color: theme-color('sportbrand1');
+      font-style:italic;
+      text-transform: lowercase;
+    }
+  }
+
+}
+
+
+/* Services  */
+
+.k-startseite-services {
+  padding-bottom:  $k-design-base-margin;
+}
+
+.k-startseite-services .cms-section-default {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .col-md-6:first-child {
+    flex: 0 0 30%;
+    max-width: 30%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .col-md-6:last-child {
+    flex:0 0 70%;
+    max-width: 70%;
+  }
+
+  .cms-block-container-row {
+    align-items: start;
+  }
+}
+
+.k-services {
+  width: 49%;
+
+  h2, p {
+    margin-bottom: 10px;
+  }
+
+  h2 span {
+    font-size: $k-design-base-size-h2 / 1.5;
+  }
+
+  a {
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .k-services {
+    width: 100%
+  }
+
+  .k-services .cms-block-container-row {
+    align-items: center;
+  }
+
+  .k-services:nth-child(even) .cms-block-container-row {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Blog Listing */
+
+.k-startseite-blog-listing{
+  .cms-element-sas-blog-listing-actions {
+    display: none;
+  }
+}
+
+/* Sport Section */
+.k-startseite-sport-logo {
+
+  .cms-element-image {
+    display: block;
+    text-align: center;
+  }
+
+
+
+  .cms-image-container {
+    display: flex;
+    justify-content: center;
+
+    img {
+      width:300px;
+      height: auto;
+    }
+  }
+
+}
+
+/* Newsletter */
+
+.k-startseite-newsletter {
+  .k-hero-text {
+    color: theme-color('brand2')
+  }
+}
+
+.k-newsletter-form-wrapper {
+  background: #ffffff;
+  margin: $k-design-base-margin auto;
+  width: 60%;
+  min-width: 320px;
+
+  .card-title {
+    display: none;
+  }
+}
+
+
+/* Hersteller */
+
+.k-hersteller-slider {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* Beratungen */
+.k-beratungen-grid .k-beratung-link.k-sub-category-link {
+  flex-basis: calc(50% - 20px);
+  width: calc(50% - 20px);
+}

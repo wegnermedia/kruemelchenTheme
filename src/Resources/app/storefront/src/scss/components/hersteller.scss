@@ -1,0 +1,9 @@
+.k-hersteller-slider {
+  .moorl-listing-item-image img {
+    filter: grayscale(100%);
+  }
+
+  .moorl-listing-item-wrapper:hover img {
+    filter: grayscale(0%)
+  }
+}

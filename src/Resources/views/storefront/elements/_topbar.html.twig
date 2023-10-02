@@ -1,0 +1,25 @@
+<div class="k-topbar">
+    <div class="container k-topbar-container">
+
+        {#  Slogan #}
+        <div class="k-topbar-el k-topbar-el--slogan">
+            <h1>{{  theme_config('k-basics-claim') }}</h1>
+        </div>
+
+        {#  Address #}
+        <div class="k-topbar-el k-topbar-el--address">
+            <a href="{{ theme_config('k-address-google-link') }}"
+               class="k-topbar-address-link"
+               title="{{ theme_config('k-address-headline') }}: {{ theme_config('k-address-street') }} • {{ theme_config('k-address-postal') }} {{ theme_config('k-address-city') }}"
+               target="_blank">
+                <span class="k-topbar-text">{{ theme_config('k-address-street') }} • {{ theme_config('k-address-postal') }} {{ theme_config('k-address-city') }}</span>
+            </a>
+        </div>
+
+        {#  Contact #}
+        <div class="k-topbar-el k-topbar-el--contact">
+            {% sw_include "@Storefront/storefront/elements/_contactlist.html.twig" %}
+        </div>
+
+    </div>
+</div>

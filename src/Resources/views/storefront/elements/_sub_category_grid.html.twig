@@ -1,0 +1,18 @@
+    <div class="k-sub-categories">
+        {% for subcat in sub_categories %}
+            <a href="{{ category_url(subcat.category) }}" target="_self" class="k-sub-category-link k-has-background" >
+                <h4 class="k-sub-category-title">{{ subcat.category.translated.name }}</h4>
+                {# Background #}
+                <div class="k-background-wrapper k-background-wrapper--dynamic" style="background-color: {{ customBgColor }};">
+                    <picture class="k-background-media">
+                        {% if subcat.category.media %}
+                            {%  set img_url =subcat.category.media.url | raw %}
+                        {% else %}
+                            {% set img_url = 'https://deinkruemelchen.de/shop/media/84/71/23/1667670032/kruemelchen-kategorie-fallback.png' %}
+                        {% endif %}
+                        <img src="{{ img_url }}" class="k-background-img" title="Hintergrundbild {{ subcat.category.translated.name }}" alt="Hintergrundbild {{ subcat.category.translated.name }}" />
+                    </picture>
+                </div>
+            </a>
+        {% endfor %}
+    </div>

@@ -1,0 +1,43 @@
+/* Pagination */
+.cms-element-product-listing-actions {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sorting {
+  .custom-select {
+    height: auto;
+    border-radius: 50px;
+    padding: .75rem 1.2rem;
+  }
+
+}
+
+.pagination {
+  .page-link {
+    padding: .75rem 1.2rem;
+  }
+
+  .page-item:first-child .page-link {
+    border-top-left-radius: 45px;
+    border-bottom-left-radius: 45px;
+  }
+
+  .page-item:last-child .page-link {
+    border-top-right-radius: 45px;
+    border-bottom-right-radius: 45px;
+  }
+
+
+  /* Bottom Page Navigation */
+  .pagination-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+
+    .pagination {
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{% sw_extends "@Storefront/storefront/layout/footer/footer.html.twig" %}
+
+{% block layout_footer_inner_container %}
+
+<div class="k-footer-row k-footer-row--logo">
+
+        {# --- Footer Logo --- #}
+        <div class="k-footer-logo">
+            <a  href="/"
+                class="k-footer-logo-link"
+                title="Zur Startseite vom {{ theme_config('k-basics-name') }} - {{ theme_config('k-basics-claim') }}">
+                <picture class="footer-logo-picture">
+                    {% block layout_header_logo_image_tablet %}
+                        {% if theme_config('sw-logo-tablet') and theme_config('sw-logo-tablet') != theme_config('sw-logo-desktop') %}
+                            <source srcset="{{ theme_config('sw-logo-tablet') |sw_encode_url }}"
+                                    media="(min-width: {{ theme_config('breakpoint.md') }}px) and (max-width: {{ theme_config('breakpoint.lg') - 1 }}px)">
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block layout_header_logo_image_mobile %}
+                        {% if theme_config('sw-logo-mobile') and theme_config('sw-logo-mobile') != theme_config('sw-logo-desktop') %}
+                            <source srcset="{{ theme_config('sw-logo-mobile') |sw_encode_url }}"
+                                    media="(max-width: {{ theme_config('breakpoint.md') - 1 }}px)">
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block layout_header_logo_image_default %}
+                        {% if theme_config('sw-logo-desktop') %}
+                            <img src="{{ theme_config('sw-logo-desktop') |sw_encode_url }}"
+                                 alt="{{ "header.logoLink"|trans|striptags }}"
+                                 class="img-fluid header-logo-main-img"/>
+                        {% endif %}
+                    {% endblock %}
+                </picture>
+            </a>
+       </div>
+
+    {# Social CTA #}
+    <div class="k-footer-social">
+        <h6 class="k-footer-social-headline">{{ theme_config('k-social-headline')}}</h6>
+        {% sw_include "@Storefront/storefront/elements/_contactlist.html.twig" %}
+    </div>
+
+</div>
+
+
+    {# --- Footer Infos --- #}
+    <div class="k-footer-row k-footer-row--infos">
+
+        <div class="container">
+            <div class="row footer-columns k-footer-infos"
+             data-collapse-footer="true">
+
+                {# Supported by #}
+                <div class="col-lg-3 col-md-6 footer-column js-footer-column k-footer-info k-footer-info--supportedby">
+
+                    {% sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_start.html.twig" with {
+                        'id'        : 'collapseFooterSupportedByTitle',
+                        'target'    : 'collapseSupportedBy',
+                        'headline'  : theme_config('k-support-headline'),
+                    } only %}
+
+                    <a  href="{{ theme_config('k-support-link') }}"
+                        class="k-footer-support-link"
+                        title="{{ theme_config('k-support-link-title') }}"
+                        target="_blank">
+                        <figure class="k-footer-support-figure">
+                            <img src="https://deinkruemelchen.de/shop/media/b2/90/08/1695568787/wappenzeichen-nrw_farbig_rgb.png"
+                                 class="k-footer-support-img"
+                                 alt="Logo NRW" />
+                            <figcaption class="k-footer-support-caption">{{ toParagraphs(theme_config('k-support-text')) | raw }}</figcaption>
+                        </figure>
+                    </a>
+
+                    {%  sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_end.html.twig" %}
+                </div>
+
+            {# Who we are #}
+            <div class="col-lg-3 col-md-6 footer-column js-footer-column k-footer-info k-footer-info--aboutus">
+
+                {% sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_start.html.twig" with {
+                    'id'        : 'collapseFooterAboutUsTitle',
+                    'target'    : 'collapseAboutUsHotline',
+                    'headline'  : theme_config('k-story-headline'),
+                } only %}
+
+                {{ toParagraphs(theme_config('k-story-text')) | raw }}
+
+                {%  sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_end.html.twig" %}
+            </div>
+
+
+
+
+
+            {# Öffnungszeiten #}
+            <div class="col-lg-3 col-md-6 footer-column js-footer-column k-footer-info k-footer-info--storetimes">
+
+                {% sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_start.html.twig" with {
+                    'id'        : 'collapseStoreTimesTitle',
+                    'target'    : 'collapseStoreTimes',
+                    'headline'  : theme_config('k-hours-headline'),
+                } only %}
+
+                {% if theme_config('k-hours-info-show') %}
+                    <div class="k-store-times-message">
+                        <h3 class="k-store-times-message-headline">{{ theme_config('k-hours-info-headline') }}</h3>
+                        <p class="k-store-times-message-content">{{ theme_config('k-hours-info-text') }}</p>
+                    </div>
+                {% endif %}
+
+                {% set weekdays = {  'montag': 1 ,'dienstag': 2,'mittwoch': 3,'donnerstag':4,'freitag':5,'samstag':6,'online':7 } %}
+
+                <table class="k-store-times-table">
+                    <tbody>
+                        {% for key, weekday in weekdays %}
+                            <tr>
+                                <td class="k-store-times-label"><span>{{ ucwords(key) }}</span></td>
+                                <td class="k-store-times-value"><span>{{ theme_config(concat('k-hours-', key)) }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {%  sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_end.html.twig" %}
+            </div>
+
+                {# Address & Phone #}
+                <div class="col-lg-3 col-md-6 footer-column js-footer-column k-footer-info k-footer-info--address">
+
+                    {% sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_start.html.twig" with {
+                        'id'        : 'collapseFooterAddressTitle',
+                        'target'    : 'collapseAddress',
+                        'headline'  : theme_config('k-address-headline'),
+                    } only %}
+
+                    <a href="{{ theme_config('k-address-google-link') }}"
+                       class="k-footer-address-link"
+                       title="{{ theme_config('k-address-headline') }}: {{ theme_config('k-address-street') }} • {{ theme_config('k-address-postal') }} {{ theme_config('k-address-city') }}"
+                       target="_blank">
+                        <address class="k-footer-address-element">
+                            <span class="k-footer-address-line k-footer-address-line--company">{{theme_config('k-basics-name')}}</span>
+                            <span class="k-footer-address-line k-footer-address-line--claim">{{theme_config('k-basics-claim')}}</span>
+                            <span class="k-footer-address-line k-footer-address-line--owner">Inh. {{ theme_config('k-basics-owner') }}</span>
+                            <span class="k-footer-address-line k-footer-address-line--street">{{ theme_config('k-address-street')}}</span>
+
+                            {% if theme_config('k-address-info') != '' %}
+                                <span class="k-footer-address-line k-footer-address-line--info">{{ theme_config('k-address-info')}}</span>
+                            {% endif %}
+
+                            <span class="k-footer-address-line k-footer-address-line--city">{{ theme_config('k-address-postal')}} {{ theme_config('k-address-city') }}</span>
+                        </address>
+                    </a>
+
+                    <a href="tel:{{ phoneUrl(theme_config('k-contact-phone-number')) }}"
+                       class="k-footer-phone-link"
+                       title="{{ theme_config('k-contact-phone-label') }}"
+                       target="_blank">
+                        <span class="fas fa-phone k-icon"></span>
+                        <span class="k-phone-number">{{ theme_config('k-contact-phone-number') }}</span>
+                    </a>
+
+                    <a href="{{ whatsAppUrl(theme_config('k-contact-whatsapp-number'), theme_config('k-contact-whatsapp-message')) }}"
+                       class="k-footer-phone-link"
+                       title="{{ theme_config('k-contact-whatsapp-label') }}"
+                       target="_blank">
+                        <span class="fab fa-whatsapp k-icon"></span>
+                        <span class="k-phone-number">{{ theme_config('k-contact-whatsapp-number') }}</span>
+                    </a>
+
+                    {%  sw_include "@Storefront/storefront/layout/footer/_partials/collapsable_end.html.twig" %}
+                </div>
+
+        </div>
+    </div>
+    </div>
+
+    {{ parent() }}
+
+
+    {% sw_include "@Storefront/storefront/elements/_brandbar.html.twig" %}
+
+{% endblock %}
+
+{#  Hide the Service Menu #}
+{% block layout_footer_navigation_hotline %}{% endblock %}
+
+{# Hide the extra Navigation #}
+{% block layout_footer_navigation_columns %}{% endblock %}
+
+{#  The Copyright #}
+{% block layout_footer_copyright %}
+    <div class="footer-copyright">
+        &copy; {{ theme_config('k-basics-name')}} {{ 'now' | date('Y') }}
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+
+html {
+  scroll-behavior: smooth;
+}
+p, span, a, td, tr, th {
+  font-size: $k-design-base-size-p;
+}
+
+h1,
+h1 span {
+  line-height:1.2em;
+  font-weight: lighter;
+}
+
+h2, h2 span {
+  font-size: $k-design-base-size-h2;
+  margin-bottom: $k-design-base-margin / 1.5;
+  line-height:1.2em;
+  font-weight: lighter;
+}
+
+
+.k-container {
+  //margin-bottom: 30px;
+
+  .boxed {
+    background-color: #ffffff;
+  }
+}
+
+.container-main {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}

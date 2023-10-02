@@ -1,0 +1,134 @@
+/*
+    Topbar Section
+ */
+
+.k-topbar {
+  background-color: theme-color-level("brand3", -12);
+  padding: 8px 0px;
+  margin: 0px;
+  color: theme-color("text");
+}
+
+.k-topbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.k-topbar-el--slogan  {  width: 25%; }
+.k-topbar-el--address {  width: 50%; }
+.k-topbar-el--contact {  width: 25%; }
+
+.k-topbar-el--slogan h1 {
+  font-size: 1em;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 0px;
+}
+
+.k-topbar-el--address span {
+  text-align: center;
+  font-size: 14px
+}
+
+
+.k-topbar-address-link {
+  color: theme-color("text");
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &:hover .icon {
+    color: theme-color("linkhover");
+    text-decoration: none;
+  }
+}
+
+/* Specials / Rsponsive */
+.k-topbar .k-contact-item--address {
+  display: none;
+}
+
+/*
+    --- Contact List ---
+ */
+
+.k-contact-list {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.k-contact-link {
+  display: inline-block;
+  margin-left: 15px;
+  color: theme-color("text");
+
+  &:hover .icon {
+    color: theme-color("linkhover")
+  }
+}
+
+
+@include media-breakpoint-down(md) {
+
+  /* hide address long, display icon */
+  .k-topbar-contacts-address { display: inherit; }
+  .k-topbar-el--slogan  {  width: 50%; }
+  .k-topbar-el--address {  display: none; }
+  .k-topbar-el--contact {  width: 50%; }
+
+}
+
+@include media-breakpoint-down(sm) {
+
+  .k-topbar {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    margin:0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    font-size: 1.4em;
+    border-top: 1px solid theme-color('border');
+    box-shadow: theme-color-level('border', -5) 0px 0px 7px;
+
+    .k-contact-item--address {
+      display: inline-block;
+    }
+  }
+
+  .k-brand-bar {
+    position: fixed;
+    bottom:0px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .k-topbar-el--slogan  {  display: none; }
+  .k-topbar-el--address {  display: none; }
+  .k-topbar-el--contact {  width: 100%; }
+
+  .k-topbar-el--contact .k-contact-list {
+    justify-content: space-around;
+  }
+
+  .footer-main .k-brand-bar {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left:0;
+  }
+
+  .k-footer-copyright {
+    margin-bottom:$k-design-base-margin;
+  }
+
+}
